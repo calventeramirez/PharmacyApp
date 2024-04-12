@@ -37,7 +37,9 @@ ul, li{
 }
 
 #imagen-footer {
-    height: 100px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    height: 150px;
     float: left;
 }
 
