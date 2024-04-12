@@ -1,28 +1,59 @@
 /* TONALIDADES DE VERDES
-rgb(102, 187, 106);
-rgb(129, 199, 132);
-rgb(46, 125, 50);
-rgb(218, 247, 166);
-rgb(51,255, 51);
-rgb(51, 153, 51);
+#006837
+#009245
+#39b54a
+#22b573
 */
 
 /*--------------------------------NAVBAR-------------------------------------*/
 .navbar{
-    background-color: rgb(243, 243, 243);
+    background-color: #009245;
+    margin-bottom: 2%;
 }
 
-#imagen-logo {
+#imagen-nav {
     height: 200px;
 }
 
-a.nav-link{
-    color: rgb(51, 153, 51);
+.nav-item > a{
+    color: white;
     font-size: 30px;
+    text-decoration: none;
 }
+
+ul, li{
+    padding-right: 80px;
+}
+
 
 /*--------------------------------MAIN-------------------------------------*/
 
-
 /*--------------------------------FOOTER-------------------------------------*/
 
+.footer-container{
+    background-color: #009245;
+    padding-top: 1%;
+    margin-top: 2%;
+}
+
+#imagen-footer {
+    height: 100px;
+    float: left;
+}
+
+.col-lg-7 > p{
+    color: white;
+}
+
+.col-lg-3 > p{
+    color: white;
+}
+
+.footer-li {
+    color: white;
+}
+
+.footer-li > a{
+    color: white;
+    text-decoration: none;
+}
