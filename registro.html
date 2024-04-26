@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PharmacyApp - Registro</title>
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
-    <script src="#"></script> <!-- Script de JavaScript -->
+    <script src="JS/main.js" defer></script> <!-- Script de JavaScript -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
@@ -38,7 +38,7 @@
                 <div id = "registro">
                     <form id="registroform">
                         <label for="usuario">Usuario</label>
-                        <input type ="text" name = "usuario" placeholder="Usuario" required>
+                        <input type ="text" name = "usuario" placeholder="Usuario" >
                         <label for="contraseña">Contraseña</label>
                         <input type ="password" name = "contrasena" placeholder="Contraseña" required>
                         <label for="email">Email</label>
@@ -55,7 +55,7 @@
                         <input type ="text" name = "ciudad" placeholder="Ciudad" required>
                         <label for="codigo_postal">Código postal</label>
                         <input type ="text" name = "codigo_postal" placeholder="Código postal" required>
-                        <button type="submit" class="btn btn-primary">Registrarse/button>
+                        <button id="boton" type="submit" class="btn btn-primary">Registrarse</button>
                         <a href ="#">¿Tienes cuenta? Iniciar Sesión</a>
                     </form>
                 </div>
