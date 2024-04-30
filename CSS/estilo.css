@@ -12,7 +12,7 @@
 }
 
 #imagen-nav {
-    height: 200px;
+    height: 100px;
 }
 
 .nav-item > a{
@@ -34,6 +34,10 @@ ul, li{
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+
+#contenedor-login{
+    margin-top: 10%
 }
 
 /* Cardboard for Login */
@@ -71,10 +75,21 @@ ul, li{
 /*--------------------------------FOOTER-------------------------------------*/
 
 .footer-container{
+
     background-color: #009245;
     padding-top: 1%;
     margin-top: 2%;
+    
 }
+
+.footer-container-pequeno{
+    background-color: #009245;
+    padding-top: 1%;
+    margin-top: 2%;
+    position: absolute;
+    bottom: 0;
+}
+
 
 #imagen-footer {
     padding-bottom: 10px;
