@@ -72,6 +72,39 @@ ul, li{
     margin-right: 20%;
 }
 
+.form-contact{
+    background: #FFFFFF;
+    box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 20px;
+    width: 340px;
+    box-sizing: border-box;
+    margin-left: 2%;
+    width: 20%;
+}
+
+.form-contact div{
+    margin-bottom: 10px;
+}
+
+.donde-estamos{
+    background: #FFFFFF;
+    box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 20px;
+    width: 340px;
+    box-sizing: border-box;
+    margin-left: 2%;
+    width: 20%;
+    margin-left: 35%;
+    margin-top: -200px;
+}
+
+.mapa{
+    margin-top:10%;
+    margin-left: 2%;
+}
+
 /*--------------------------------FOOTER-------------------------------------*/
 
 .footer-container{
