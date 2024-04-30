@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmacyApp - Registro</title>
+    <title>PharmacyApp - Esqueleto</title>
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
-    <script src="JS/main.js" defer></script> <!-- Script de JavaScript -->
-    <link rel="stylesheet" href="/CSS/estilo.css"> <!-- Hoja de estilos -->
+    <script src="#"></script> <!-- Script de JavaScript -->
+    <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
 </head>
@@ -33,55 +33,30 @@
     </nav>
     <main>
         <!-- Sección de inicio -->
-        <section>
-            <div id = "contenedor-registro">
-                <div id = "registro">
-                    <form id="registroform">
-                        <div>
-                            <label for="usuario">Usuario</label>
-                            <input type ="text" class ="input-field" name = "usuario" placeholder="Usuario" >
-                        </div>
-                        <div>
-                            <label for="contraseña">Contraseña</label>
-                            <input type ="password" class ="input-field" name = "contrasena" placeholder="Contraseña" required>
-                        </div>
-                        <div>
-                            <label for="email">Email</label>
-                            <input type ="email" class ="input-field" name = "email" placeholder="Email" required>
-                        </div>
-                        <div>
-                            <label for="nombre">Nombre</label>
-                            <input type ="text" class ="input-field" name = "nombre" placeholder="Nombre" required>
-                        </div>
-                        <div>
-                            <label for="apellidos">Apellidos</label>
-                            <input type ="text" class ="input-field" name = "apellidos" placeholder="Apellidos" required>
-                        </div>
-                        <div>
-                            <label for="telefono">Teléfono</label>
-                            <input type ="tel" class ="input-field" name = "telefono" placeholder="Teléfono" required>
-                        </div>
-                        <div>
-                            <label for="direccion">Dirección</label>
-                            <input type ="text" class ="input-field" name = "direccion" placeholder="Dirección" required>
-                        </div>
-                        <div>
-                            <label for="ciudad">Ciudad</label>
-                            <input type ="text" class ="input-field" name = "ciudad" placeholder="Ciudad" required>
-                        </div>
-                        <div>
-                            <label for="codigo_postal">Código postal</label>
-                            <input type ="text" class ="input-field" name = "codigo_postal" placeholder="Código postal" required>
-                        </div>
-                        <div>
-                            <button id="boton" type="submit" class="btn btn-success">Registrarse</button>
-                        </div>
-                        <a href ="/login.html">¿Tienes cuenta? Iniciar Sesión</a>
-                    </form>
-                </div>
-
+       <div>
+        <form>
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name ="nombre" placeholder="nombre">
             </div>
-        </section>
+            <div>
+                <label for = "email">Correo Electronico:</label>
+                <input type="email" name="email" placeholder="Correo Electronico">
+            </div>
+            <div>
+                <label for = "asunto">Asunto</label>
+                <textarea placeholder="Asunto"></textarea>
+            </div>
+        </form>
+       </div>
+       <div>
+        <h2>Donde estamos</h2>
+        Calle Sin suerte Numero 123
+       </div>
+       <div>
+        <!-- Aqui ira un mapa con la API de GOOGLE -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3199.2994833749967!2d-4.462811723707316!3d36.69134067382762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f9c45623d2c3%3A0x7a634bd28c0cf953!2sMEDAC%20Nova%20Centro%20Tecnol%C3%B3gico%20de%20FP!5e0!3m2!1ses!2ses!4v1714492292802!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+       </div>
     </main>
     <footer>
         <div class="footer-container">
