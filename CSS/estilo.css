@@ -35,6 +35,7 @@ ul, li{
     align-items: center;
     margin-bottom: 20px;
 }
+
 /* Cardboard for Login */
 #loginform, #registroform {
     background: #FFFFFF;
@@ -44,6 +45,7 @@ ul, li{
     width: 340px;
     box-sizing: border-box;
 }
+
 /* Separator for fields in Login form */
 .input-field {
     margin-bottom: 20px;
@@ -53,6 +55,17 @@ ul, li{
 #imagen-logo {
     display: flex;
     justify-content: center;
+}
+
+/*Letter Index*/
+#letras-index h2{
+    display: flex;
+    justify-content: center;
+}
+
+#letras-index p{
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 /*--------------------------------FOOTER-------------------------------------*/
