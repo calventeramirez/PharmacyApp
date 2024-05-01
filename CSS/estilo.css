@@ -80,11 +80,58 @@ ul, li{
     width: 340px;
     box-sizing: border-box;
     margin-left: 2%;
-    width: 20%;
+    width: 50%;
 }
 
 .form-contact div{
     margin-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus,
+textarea:focus{
+    border-color: #009245;
+}
+textarea {
+    height: 100px;
+}
+
+button {
+    background-color: #4caf50; /* Verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde más oscuro */
+}
+
+.imagen-Form{
+    display: flex;
+    justify-content: center;
+    margin-top: -570px;
+    margin-left: 1000px;
 }
 
 .donde-estamos{
@@ -96,13 +143,13 @@ ul, li{
     box-sizing: border-box;
     margin-left: 2%;
     width: 20%;
-    margin-left: 35%;
-    margin-top: -200px;
+    margin-left: 2%;
+    margin-top: 110px;
 }
 
 .mapa{
-    margin-top:10%;
-    margin-left: 2%;
+    margin-top: -15%;
+    margin-left: 60%;
 }
 
 /*--------------------------------FOOTER-------------------------------------*/

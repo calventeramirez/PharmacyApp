@@ -9,6 +9,7 @@
     <script src="#"></script> <!-- Script de JavaScript -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/fontawesome.min.css">
     <!-- Bootstrap -->
 </head>
 
@@ -23,10 +24,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login.html">Login/Registro</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login/Registro</a></li>
                 </ul>
             </div>
         </div>
@@ -35,24 +36,47 @@
         <!-- Sección de inicio -->
        <div class = "form-contact">
         <form>
-            <div>
+            <div class="campo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name ="nombre" placeholder="nombre">
+                <input type="text" id="nombre" name="nombre" required>
             </div>
-            <div>
-                <label for = "email">Correo Electronico:</label>
-                <input type="email" name="email" placeholder="Correo Electronico">
+
+            <div class="campo">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
             </div>
-            <div>
-                <label for = "asunto">Asunto</label>
-                <textarea placeholder="Asunto"></textarea>
+
+            <div class="campo">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
             </div>
-            <button class ="btn btn-success">Enviar</button>
+
+            <div class="campo">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+            </div>
+
+            <div class="campo">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+
+            <button type="submit">Enviar mensaje</button>
         </form>
+        </form>
+       </div>
+       <div class="imagen-Form">
+        <img src="img/MunecoForm.png" alt="Muñeco Formulario">
        </div>
        <div class="donde-estamos">
         <h2>Donde estamos</h2>
-        Calle Sin suerte Numero 123
+        <p>Avda. de Isaac Peral, 44</p>
+        <p>29004 Málaga</p>
+        <p>Teléfono: 952 00 00 00</p>
+        <h3>Redes Sociales</h3>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-x-twitter"></i>
        </div>
        <div class="mapa">
         <!-- Aqui ira un mapa con la API de GOOGLE -->
@@ -69,15 +93,6 @@
                     <p> &copy; Desarrollado por: Pablo Jesús Calvente Ramírez, Fernando Dominguez Lago, Pablo Pérez Iza
                         & Victor
                         Moreno Benítez</p>
-                    <p>
-                        PharmacyApp es una innovadora plataforma digital diseñada para revolucionar la forma en que las
-                        personas
-                        acceden a medicamentos y gestionan sus tratamientos médicos. Esta aplicación móvil y web se ha
-                        desarrollado con el propósito de brindar comodidad y asistencia a personas mayores, dependientes
-                        y
-                        pacientes con enfermedades crónicas, en particular aquellos que enfrentan la lucha contra el
-                        cáncer.
-                    </p>
                 </div>
                 <div class="col-lg-3">
                     <p>Enlaces de interés</p>
