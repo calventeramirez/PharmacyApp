@@ -23,22 +23,21 @@ boton.addEventListener("click", function (ev) {
         alert("El nombre no puede estar vacio")
         formularioCorrecto = false;
     } else {
-        if ((nombre.length < 1 && formularioCorrecto) || (nombre.length > 2 && formularioCorrecto)) {
-            alert("El nombre debe tener una o dos palabras");
+        if ((nombre.length > 2 && formularioCorrecto)) {
+            alert("El nombre debe tener una palabra");
             formularioCorrecto = false;
         }
     }
     
     //Validacion apellido
-    let apellidos = document.getElementsByName("apellidos")[0].value.split(" ");
+    let apellido = document.getElementsByName("apellidos")[0].value.split(" ");
     if (document.querySelectorAll("input")[2].value == "" && formularioCorrecto) {
         alert("El apellido no puede estar vacio")
         formularioCorrecto = false;
     } else {
-        if ((apellidos.length < 1 && formularioCorrecto) || (apellidos.length > 2 && formularioCorrecto)) {
-            alert("Los apellidos deben tener una o dos palabras");
+        if ((apellido.length > 2 && formularioCorrecto)) {
+            alert("Los apellidos deben tener una palabra");
             formularioCorrecto = false;
-            
         }
     }
     
@@ -65,5 +64,5 @@ boton.addEventListener("click", function (ev) {
         formularioCorrecto = false
     }
 
-    if(formularioCorrecto) location.href="index.thml";
+    if(formularioCorrecto) location.href="registro.php";
 });
