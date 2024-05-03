@@ -396,7 +396,7 @@ button:hover {
 
 .footer-container{
 
-    background-color: #009245;
+    background-color: #157347;
     padding-top: 1%;
     margin-top: 2%;
     
@@ -420,6 +420,7 @@ button:hover {
 }
 
 .col-lg-7 > p{
+    margin-top: 6%;
     color: white;
 }
 
