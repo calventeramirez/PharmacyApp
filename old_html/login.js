@@ -24,5 +24,5 @@ boton.addEventListener("click", function (ev) {
         formularioCorrecto = false;
     }
     
-    if(formularioCorrecto) location.href="login.php";
+    if(formularioCorrecto) location.href="../funciones/login.php";
 });
