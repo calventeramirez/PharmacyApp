@@ -105,7 +105,7 @@
                           <span class="span">¿Recordar la contraseña?</span>
                         </div>
                         <button class="button-submit" id = "boton">Iniciar Sesión</button>
-                        <p class="p">¿No tienes cuenta? <a href="./registro.html"><span class="span">Registrate</span></a>
+                        <p class="p">¿No tienes cuenta? <a href="./registro.php"><span class="span">Registrate</span></a>
                     
                         </p><p class="p line">O con</p>
                     
