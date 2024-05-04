@@ -26,6 +26,9 @@
                     // Si el usuario está logueado
                     if(isset($_SESSION['usuario'])) {
                         echo '<a href="#"><i class="fas fa-user"></i> '.$_SESSION['usuario'].'</a>';
+                        if($_SESSION['rol'] == "admin"){
+                            echo '<a href="./anadirMedicamento.php">Añadir Medicamento</a>';
+                        }
                         echo '<a href="./funciones/cerraSesion.php">Cerra sesión</a>';
                         echo '<a href="#" ><i class="fas fa-shopping-cart"></i> Carrito</a>';
                     } else { // Si no está logueado
