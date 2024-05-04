@@ -8,7 +8,8 @@
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
-    <script src="./JS/login.js" defer></script> <!-- Script de JavaScript -->
+    <!-- <script src="./JS/login.js" defer></script> Script de JavaScript -->
+    <?php require "./funciones/conexion_bbdd.php" ?>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                     if(isset($_SESSION['usuario'])) {
                         header("Location: index.php");
                     } else { // Si no está logueado
-                        echo '<a href="./login.html" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
+                        echo '<a href="./login.php" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
                     }
                     ?>
                 </div>
@@ -41,6 +42,41 @@
         </nav>
     </header>
     <main>
+        <?php
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $usuario = $_POST['usuario'];
+                $contrasena = $_POST['contrasena'];
+
+                $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
+                $resultado = $conexion->query($sql);
+                while ($fila = $resultado->fetch_assoc()) {
+                    $contrasena_cifrada = $fila['contrasena'];
+                    $rol = $fila['rol'];
+                }
+
+                if ($resultado->num_rows == 0) {
+        ?>
+                    <div class="alert alert-danger" role="alert">
+                        El usuario no existe
+                    </div>
+        <?php
+                } else {
+                    $acceso_valido = password_verify($contrasena, $contrasena_cifrada);
+                    if ($acceso_valido) {
+                        session_start();
+                        $_SESSION['usuario'] = $usuario;
+                        $_SESSION['rol'] = $rol;
+                        header("Location: index.php");
+                    } else {
+                    ?>
+                        <div class="alert alert-danger" role="alert">
+                            Error. Contraseña incorrecta.
+                        </div>
+        <?php
+                }
+                }
+            }
+        ?>
         <!-- Sección de inicio -->
         <section>
             <div id = "contenedor-login">
