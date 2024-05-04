@@ -13,9 +13,10 @@
 </head>
 
 <body>
+    <?php session_start(); ?>
     <header>
         <div class="header-top">
-            <a href="./index.html" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
+            <a href="./index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
                 <div class="buscador">
                     <input type="text" placeholder="Buscar productos...">
@@ -25,18 +26,18 @@
                     // Si el usuario está logueado
                     if(isset($_SESSION['usuario'])) {
                         echo '<a href="#"><i class="fas fa-user"></i> '.$_SESSION['usuario'].'</a>';
-                        echo '<a href="#" class="carrito"><i class="fas fa-shopping-cart"></i> Carrito</a>';
+                        echo '<a href="./funciones/cerraSesion.php">Cerra sesión</a>';
+                        echo '<a href="#" ><i class="fas fa-shopping-cart"></i> Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="./login.html" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
+                        echo '<a href="./login.php" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
                     }
-                    
                     ?>
                 </div>
             </div>
         </div>
         <nav>
             <ul class="menu-verde">
-                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./index.php">Inicio</a></li>
                 <li><a href="">Medicamentos</a></li>
                 <li><a href="./contacto.html">Contacto</a></li>
             </ul>
@@ -55,7 +56,7 @@
             <div>
                 <h2>Tu salud, nuestra prioridad</h2>
                 <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
-                <a href="login.html" class="btn btn-success">Comienza ahora</a>
+                <a href="login.php" class="btn btn-success">Comienza ahora</a>
             </div>
         </section>
         <section class="servicios">
