@@ -25,7 +25,7 @@
 }
 
 .buscador input[type="text"] {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -48,6 +48,7 @@
   width: 50%;
   text-align: right;
   margin-top: -6%;
+  margin-right: -9%;
 }
 
 .cuenta-carrito a {
@@ -139,6 +140,37 @@
 #letras-index p {
   margin-left: 20%;
   margin-right: 20%;
+}
+
+.salud {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/*Comienza ahora button propierties*/
+.salud .btn.btn-success {
+  padding: 5px 10px; 
+  font-size: 14px;
+  width: 154px;
+  height: 37px;
+}
+
+/*Servicios destacados section propierties*/
+.servicios .servicios-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/*Information list columns propierties*/
+.servicios .servicios-list li {
+  flex: 1 0 200px;
+  margin: 10px;
+  text-align: center;
 }
 
 .form-contact {
@@ -457,6 +489,15 @@ button:hover {
 }
 
 /*--------------------------------FOOTER-------------------------------------*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Footer propierties for being on the bottom */
+footer {
+  margin-top: auto;
+}
 
 .footer-container {
   background-color: #157347;

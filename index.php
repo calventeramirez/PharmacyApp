@@ -55,7 +55,7 @@
             <h2>PharmacyApp</h2>
             <p>PharmacyApp es una innovadora plataforma digital diseñada para revolucionar la forma den que las personas acceden a medicamentos y gestionan sus tratamientos. Esta aplicación móvil y web se ha desarrollado con el propósito de brindar comodidad y asistencia a personas mayores, dependientes y pacientes con enfermedades crónicas, en particular, aquellos que enfrentan la lucha contra el cáncer.</p>
         </section>
-        <section>
+        <section class="salud">
             <div>
                 <h2>Tu salud, nuestra prioridad</h2>
                 <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
