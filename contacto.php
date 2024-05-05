@@ -122,8 +122,8 @@
                 <div class="col-lg-3">
                     <p>Enlaces de interés</p>
                     <ul>
-                        <li class="footer-li"><a href="./politicaPrivacidad.html">Política de privacidad</a></li>
-                        <li class="footer-li"><a href="./terminosCondiciones.html">Términos y condiciones</a></li>
+                        <li class="footer-li"><a href="./politicaPrivacidad.php">Política de privacidad</a></li>
+                        <li class="footer-li"><a href="./terminosCondiciones.php">Términos y condiciones</a></li>
                         <li class="footer-li"><a href="#">Política de cookies</a></li>
                     </ul>
                 </div>
