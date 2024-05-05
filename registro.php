@@ -144,12 +144,13 @@
                 //Si no hay errores
                 if (!isset($err_tarjeta) && !isset($err_usuario) && !isset($err_nombre) && !isset($err_apellido) && !isset($err_email) && !isset($err_contrasena) && !isset($err_contrasenaRep)) {
                     $contrasena_cifrada = password_hash($contrasena, PASSWORD_DEFAULT);
-                    $sql = "INSERT INTO usuarios (tarjeta_sanitaria, usuario, nombre, apellido, email, contrasena) VALUES ('$tarjeta', '$usuario', '$nombre', '$apellido', '$email', '$contrasena_cifrada')";
+                    $sql = "INSERT INTO usuarios (tarjetaSanitaria, nick, nombre, apellidos, email, contrasena) VALUES ('$tarjeta', '$usuario', '$nombre', '$apellido', '$email', '$contrasena_cifrada')";
                     if ($conn->query($sql) === TRUE) {
                         echo "Usuario registrado correctamente";
                         header("Location: index.php");
                     } 
                 }else{
+                    echo $err_nombre;
                     echo "<div class='alert alert-danger' role='alert'>Error al registrar el usuario</div>";
                 }
             }

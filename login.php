@@ -47,8 +47,8 @@
                 $usuario = $_POST['usuario'];
                 $contrasena = $_POST['contrasena'];
 
-                $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
-                $resultado = $conexion->query($sql);
+                $sql = "SELECT * FROM usuarios WHERE nick = '$usuario'";
+                $resultado = $conn->query($sql);
                 while ($fila = $resultado->fetch_assoc()) {
                     $contrasena_cifrada = $fila['contrasena'];
                     $rol = $fila['rol'];
