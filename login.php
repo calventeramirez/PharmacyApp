@@ -27,7 +27,7 @@
                     if(isset($_SESSION['usuario'])) {
                         header("Location: index.php");
                     } else { // Si no está logueado
-                        echo '<a href="./login.php" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarSesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -35,9 +35,9 @@
         </div>
         <nav>
             <ul class="menu-verde">
-                <li><a href="./index.php">Inicio</a></li>
+                <li><a href="/index.php">Inicio</a></li>
                 <li><a href="">Medicamentos</a></li>
-                <li><a href="./contacto.php">Contacto</a></li>
+                <li><a href="/contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -153,9 +153,9 @@
                 <div class="col-lg-3">
                     <p>Enlaces de interés</p>
                     <ul>
-                        <li class="footer-li"><a href="./politicaPrivacidad.php">Política de privacidad</a></li>
-                        <li class="footer-li"><a href="./terminosCondiciones.php">Términos y condiciones</a></li>
-                        <li class="footer-li"><a href="#">Política de cookies</a></li>
+                        <li class="footer-li"><a href="/politicaPrivacidad.php">Política de privacidad</a></li>
+                        <li class="footer-li"><a href="/terminosCondiciones.php">Términos y condiciones</a></li>
+                        <li class="footer-li"><a href="/cookies.php">Política de cookies</a></li>
                     </ul>
                 </div>
             </div>

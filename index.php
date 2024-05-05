@@ -16,7 +16,7 @@
     <?php session_start(); ?>
     <header>
         <div class="header-top">
-            <a href="./index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
+            <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
                 <div class="buscador">
                     <input type="text" placeholder="Buscar productos...">
@@ -25,14 +25,14 @@
                     <?php
                     // Si el usuario está logueado
                     if(isset($_SESSION['usuario'])) {
-                        echo '<a href="#"><i class="fas fa-user"></i> '.$_SESSION['usuario'].'</a>';
+                        echo '<a href="#"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> '.$_SESSION['usuario'].'</a>';
                         if($_SESSION['rol'] == "admin"){
-                            echo '<a href="./anadirMedicamento.php">Añadir Medicamento</a>';
+                            echo '<a href="/anadirMedicamento.php"><img src="/img/anadir-medicamento.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
-                        echo '<a href="./funciones/cerraSesion.php">Cerra sesión</a>';
-                        echo '<a href="#" ><i class="fas fa-shopping-cart"></i> Carrito</a>';
+                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="Cerrar sesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
+                        echo '<a href="#" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="./login.php" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarSesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -40,9 +40,9 @@
         </div>
         <nav>
             <ul class="menu-verde">
-                <li><a href="./index.php">Inicio</a></li>
+                <li><a href="/index.php">Inicio</a></li>
                 <li><a href="">Medicamentos</a></li>
-                <li><a href="./contacto.php">Contacto</a></li>
+                <li><a href="/contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -98,9 +98,9 @@
                 <div class="col-lg-3">
                     <p>Enlaces de interés</p>
                     <ul>
-                        <li class="footer-li"><a href="./politicaPrivacidad.php">Política de privacidad</a></li>
-                        <li class="footer-li"><a href="./terminosCondiciones.php">Términos y condiciones</a></li>
-                        <li class="footer-li"><a href="#">Política de cookies</a></li>
+                        <li class="footer-li"><a href="/politicaPrivacidad.php">Política de privacidad</a></li>
+                        <li class="footer-li"><a href="/terminosCondiciones.php">Términos y condiciones</a></li>
+                        <li class="footer-li"><a href="/cookies.php">Política de cookies</a></li>
                     </ul>
                 </div>
             </div>
