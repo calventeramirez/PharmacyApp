@@ -158,6 +158,64 @@
   height: 37px;
 }
 
+#productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px; /* Añade un poco de padding alrededor del contenedor para dar espacio a las tarjetas */
+}
+
+/*Card products propierties */
+.card {
+  flex: 0 0 calc(20% - 30px);
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card h2 {
+  color: #333;
+  margin: 0;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.card p {
+  color: #666;
+  padding: 1rem;
+  margin: 0;
+}
+/*Añadir button propierties */
+.card .add-to-cart {
+  background-color: #157347;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s; 
+}
+/* Añadir button effects */
+.card .add-to-cart:hover {
+  background-color: #157347;
+  color: black;
+  transform: scale(1.05);
+}
+
 /*Servicios destacados section propierties*/
 .servicios .servicios-list {
   display: flex;
@@ -171,6 +229,36 @@
   flex: 1 0 200px;
   margin: 10px;
   text-align: center;
+}
+
+/*Servicios-list propierties */
+.servicios-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* Cards from "Servicios-list */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px; /* Reduced from 15px to 10px */
+  width: calc(33% - 20px); /* Adjusted to account for the reduced margin */
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+/*Transiction on card*/
+.servicios-list .card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.servicios-list .card:hover {
+  transform: scale(1.05);
 }
 
 .form-contact {
@@ -490,6 +578,7 @@ button:hover {
 
 /*--------------------------------FOOTER-------------------------------------*/
 body {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

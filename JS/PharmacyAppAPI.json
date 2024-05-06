@@ -1,0 +1,125 @@
+{
+    "medicamentos": [
+      {
+        "id": 1,
+        "nombre": "Paracetamol",
+        "descripcion": "Tabletas de paracetamol 500mg para aliviar el dolor y la fiebre.",
+        "precio": 10.99,
+        "imagen": "https://www.kernpharma.com/sites/default/files/productos/imagenes/paracetamol-kern-pharma-efg-500-mg-20-compr-0_0.jpg",
+        "cantidad": 50
+      },
+      {
+        "id": 2,
+        "nombre": "Ibuprofeno",
+        "descripcion": "Tabletas de ibuprofeno 400mg para aliviar el dolor, la inflamación y la fiebre.",
+        "precio": 8.25,
+        "imagen": "https://www.farmaciaevacontreras.com/wp-content/uploads/2023/04/Ibuprofeno-Stadapharm-20-Sobres.jpg",
+        "cantidad": 30
+      },
+      {
+        "id": 3,
+        "nombre": "La Roche-Posay Cicaplast Baume B5 + 100ml",
+        "descripcion": "Bálsamo reparador para pieles secas",
+        "precio": 13.75,
+        "imagen": "https://parafarmaciahorizonte.com/wp-content/uploads/2023/04/la-roche-posay-cicaplast-baume-b5-100ml-19397-56-B.jpg",
+        "cantidad": 25
+      },
+      {
+        "id": 4,
+        "nombre": "Doctril Forte, 20 Comprimidos Recubiertos",
+        "descripcion": "Comprimidos para el tratamiento sintomático ocasional del dolor leve o moderado como dolores de cabeza, dentales y menstruales, así como de los estados febriles.",
+        "precio": 4.99,
+        "imagen": "url_imagen_4.jpg",
+        "cantidad": 40
+      },
+      {
+        "id": 5,
+        "nombre": "Omeprazol",
+        "descripcion": "Cápsulas de omeprazol 20mg para el alivio de la acidez estomacal.",
+        "precio": 7.50,
+        "imagen": "url_imagen_5.jpg",
+        "cantidad": 20
+      },
+      {
+        "id": 6,
+        "nombre": "Topicrem Ds+ Sebicur Champu Anticaspa Intensivo 125 Ml",
+        "descripcion": "Cuidado de la higiene en casos de dermatitis seborreica en el cuero cabelludo, con énfasis en casos de caspa intensa e irritación.",
+        "precio": 12.99,
+        "imagen": "url_imagen_6.jpg",
+        "cantidad": 60
+      },
+      {
+        "id": 7,
+        "nombre": "Zovicrem Labial 50 mg/G Crema Herpes Bomba Dosificadora 2 gr",
+        "descripcion": "Crema para el alivio local de los síntomas ocasionados por el herpes labial, tales como: picor, escozor u hormigueo",
+        "precio": 5.49,
+        "imagen": "url_imagen_7.jpg",
+        "cantidad": 15
+      },
+      {
+        "id": 8,
+        "nombre": "ZzzQuil Natura Melatonina, 30 Gominolas",
+        "descripcion": "Complemento con melatonina, vitamina B6 y extractos de plantas naturales que ayuda a conciliar el sueño. Contiene 30 gominolas.",
+        "precio": 8.99,
+        "imagen": "url_imagen_8.jpg",
+        "cantidad": 10
+      },
+      {
+        "id": 9,
+        "nombre": "Aspirina Plus, 20 Comprimidos",
+        "descripcion": "Comprimidos para el alivio sintomático de los dolores ocasionales, como de cabeza, dentales, menstruales, musculares o de espalda, así como para los estados febriles.",
+        "precio": 4.25,
+        "imagen": "url_imagen_9.jpg",
+        "cantidad": 35
+      },
+      {
+        "id": 10,
+        "nombre": "Supradyn Energy 30 comprimidos",
+        "descripcion": "Supradyn Energy 30 comprimidos es un complemento alimenticio que aporta energía en momentos de gran esfuerzo y desgaste. Los comprimidos del bote están desarrollados a base de minerales y vitaminas con coenzima Q10 que potencian la alimentación diaria.",
+        "precio": 4.75,
+        "imagen": "url_imagen_10.jpg",
+        "cantidad": 28
+      },
+      {
+        "id": 11,
+        "nombre": "Diclofenaco Kern Pharma 11,6 Mg/G Gel Cutáneo, 100 gr",
+        "descripcion": "Diclofenaco Kern Pharma está indicado en adultos y adolescentes mayores de 14 años para el alivio local del dolor y de la inflamación leve y ocasional.",
+        "precio": 4.50,
+        "imagen": "url_imagen_11.jpg",
+        "cantidad": 18
+      },
+      {
+        "id": 12,
+        "nombre": "Protopic 0.1% Pom. tópcica",
+        "descripcion": "Pomada se utiliza para tratar la dermatitis atópica moderada o grave (eccema) en adultos que no responden adecuadamente o que son intolerantes a las terapias convencionales como los corticosteroides tópicos.",
+        "precio": 80.90,
+        "imagen": "url_imagen_12.jpg",
+        "cantidad": 22
+      },
+      {
+        "id": 13,
+        "nombre": "",
+        "descripcion": "",
+        "precio": 2000.00,
+        "imagen": "url_imagen_13.jpg",
+        "cantidad": 3
+      },
+      {
+        "id": 14,
+        "nombre": "",
+        "descripcion": "",
+        "precio": 1000.00,
+        "imagen": "url_imagen_14.jpg",
+        "cantidad": 5
+      },
+      {
+        "id": 15,
+        "nombre": "",
+        "descripcion": "",
+        "precio": 1000.00,
+        "imagen": "url_imagen_15.jpg",
+        "cantidad": 2
+      }
+    ]
+  }
+  

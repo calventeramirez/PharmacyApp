@@ -1,0 +1,80 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Barra de navegación */
+.header-top {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.header-top a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+}
+
+/* Sección de búsqueda */
+.buscador {
+    margin: 20px 0;
+}
+
+.buscador input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Sección de cuenta y carrito */
+.cuenta-carrito {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cuenta-carrito a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+}
+
+.cuenta-carrito img {
+    margin-right: 5px;
+}
+
+/* Sección de servicios destacados */
+.servicios {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+.servicios h2 {
+    margin-bottom: 20px;
+}
+
+.servicios-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.servicios-list li {
+    flex: 0 0 calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
