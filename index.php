@@ -61,6 +61,7 @@
                 <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
                 <a href="login.php" class="btn btn-success">Comienza ahora</a>
             </div>
+            <h2>Productos destacados</h2>
             <div id="productos"></div>
         </section>
         <section class="servicios">
