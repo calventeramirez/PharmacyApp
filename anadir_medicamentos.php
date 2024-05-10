@@ -11,6 +11,7 @@
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
     <?php require "./funciones/conexion_bbdd.php" ?>
+    <?php require "./funciones/funciones.php" ?>
 </head>
 
 <body>
@@ -20,12 +21,10 @@
         $usuario = $_SESSION["usuario"];
         $rol = $_SESSION["rol"];
     } else {
-        $_SESSION["usuario"] = "invitado";
-        $usuario = $_SESSION["usuario"];
-        $_SESSION["rol"] = "cliente";
-        $rol = $_SESSION["rol"];
-        $_SESSION["usuario"] = "invitado";
-        $usuario = $_SESSION["cliente"];
+        header("Location: /login.php");
+    }
+    if($rol != "admin"){
+        header("Location: /index.php");
     }
     ?>
     <header>
@@ -62,12 +61,6 @@
     </header>
     <main>
     <?php
-    function depurar($entrada){
-        $salida = htmlspecialchars($entrada);
-        $salida = trim($salida);
-        return $salida;
-    }
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $temp_nombre = depurar($_POST["nombre"]);
         $temp_precio = depurar($_POST["precio"]);
@@ -84,7 +77,7 @@
         if (strlen($temp_nombre) == 0) {
             $err_nombre = "Campo obligatorio";
         } else {
-            $patron = "/^[a-zA-Z0-9]{1,40}$/";
+            $patron = "/^[a-zA-Z0-9ñÑ]{1,40}$/";
             if (!preg_match($patron, $temp_nombre)) {
                 $err_nombre = "El nombre debe tener entre 1 y 40 caracteres y contener solamente letras o números";
             } else {
@@ -96,7 +89,7 @@
         if (strlen($temp_descripcion) == 0) {
             $err_descripcion = "Campo obligatorio";
         } else {
-            $patron2 = "/^[a-zA-Z0-9 ]{1,255}$/";
+            $patron2 = "/^[a-zA-Z0-9ñÑ]{1,255}$/";
             if (!preg_match($patron2, $temp_descripcion)) {
                 $err_descripcion = "La descripción debe tener entre 1 y 255 caracteres y contener solamente letras o números";
             } else {
@@ -139,7 +132,7 @@
                 if (!in_array($_FILES["imagen"]["type"], $permitidos)) {
                     $err_imagen = "Error al subir la imagen";
                 } else {
-                    $ruta_final = "./imagenes/" . $nombre_imagen;
+                    $ruta_final = "./img/" . $nombre_imagen;
                 }
             }
         } else {
@@ -189,7 +182,7 @@
                     '$ruta_final')";
                 //Mueve la imagen a la carpeta de destino
                 move_uploaded_file($ruta_temporal, $ruta_final);
-                $conexion->query($sql);
+                $conn->query($sql);
                 echo "<div class='container alert alert-success'><h3>Medicamento insertado con éxito<h3><div>";
             }
             ?>
