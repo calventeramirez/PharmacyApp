@@ -77,24 +77,14 @@
         if (strlen($temp_nombre) == 0) {
             $err_nombre = "Campo obligatorio";
         } else {
-            $patron = "/^[a-zA-Z0-9ñÑ]{1,40}$/";
-            if (!preg_match($patron, $temp_nombre)) {
-                $err_nombre = "El nombre debe tener entre 1 y 40 caracteres y contener solamente letras o números";
-            } else {
-                $nombre = $temp_nombre;
-            }
+            $nombre = $temp_nombre;
         }
 
         #   Validación de descripcion
         if (strlen($temp_descripcion) == 0) {
             $err_descripcion = "Campo obligatorio";
         } else {
-            $patron2 = "/^[a-zA-Z0-9ñÑ]{1,255}$/";
-            if (!preg_match($patron2, $temp_descripcion)) {
-                $err_descripcion = "La descripción debe tener entre 1 y 255 caracteres y contener solamente letras o números";
-            } else {
-                $descripcion = $temp_descripcion;
-            }
+            $descripcion = $temp_descripcion;
         }
 
         #   Validación de precio
