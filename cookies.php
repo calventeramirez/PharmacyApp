@@ -23,7 +23,7 @@
                 <?php
                 // Si el usuario está logueado
                 if (isset($_SESSION['usuario'])) {
-                    echo '<a href="#"><i class="fas fa-user"></i> ' . $_SESSION['usuario'] . '</a>';
+                    echo '<a href="./dashboard.php"><i class="fas fa-user"></i> ' . $_SESSION['usuario'] . '</a>';
                     if ($_SESSION['rol'] == "admin") {
                         echo '<a href="./anadir_medicamentos.php">Añadir Medicamento</a>';
                     }
