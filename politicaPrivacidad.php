@@ -14,7 +14,7 @@
     <header>
     <?php session_start(); ?>
         <div class="header-top">
-            <a href="./index.html" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
+            <a href="./index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
                 <div class="buscador">
                     <input type="text" placeholder="Buscar productos...">
@@ -25,10 +25,10 @@
                     if(isset($_SESSION['usuario'])) {
                         echo '<a href="#"><i class="fas fa-user"></i> '.$_SESSION['usuario'].'</a>';
                         if($_SESSION['rol'] == "admin"){
-                            echo '<a href="./anadirMedicamento.php">Añadir Medicamento</a>';
+                            echo '<a href="./anadir_medicamentos.php">Añadir Medicamento</a>';
                         }
                         echo '<a href="./funciones/cerraSesion.php">Cerra sesión</a>';
-                        echo '<a href="#" ><i class="fas fa-shopping-cart"></i> Carrito</a>';
+                        echo '<a href="./carrito.php" ><i class="fas fa-shopping-cart"></i> Carrito</a>';
                     } else { // Si no está logueado
                         echo '<a href="./login.php" class="cuenta"><i class="fas fa-user"></i> Iniciar sesión</a>';
                     }
