@@ -10,6 +10,7 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
+    <?php require "./funciones/conexion_bbdd.php" ?>
 </head>
 
 <body>
