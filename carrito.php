@@ -20,12 +20,10 @@
         $usuario = $_SESSION["usuario"];
         $rol = $_SESSION["rol"];
     } else {
-        $_SESSION["usuario"] = "invitado";
-        $usuario = $_SESSION["usuario"];
-        $_SESSION["rol"] = "cliente";
-        $rol = $_SESSION["rol"];
-        $_SESSION["usuario"] = "invitado";
-        $usuario = $_SESSION["cliente"];
+        header("Location: /login.php");
+    }
+    if($rol != "admin" && $rol != "cliente"){
+        header("Location: /index.php");
     }
     ?>
     <header>
