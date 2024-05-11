@@ -7,12 +7,11 @@
 </h4>
 
 # PharmacyApp
-
 PharmacyApp es una aplicación web que ayuda a las personas mayores a gestionar su medicación de forma más fácil y segura. La aplicación permite a los usuarios:
--Solicitar medicamentos a la farmacia más cercana.
--Recibir sus medicamentos en casa o en la farmacia.
--Configurar recordatorios para la toma de pastillas.
--Comprobar el historial de medicamentos.
+* Solicitar medicamentos a la farmacia más cercana.
+* Recibir sus medicamentos en casa o en la farmacia.
+* Configurar recordatorios para la toma de pastillas.
+* Comprobar el historial de medicamentos.
 
 
 ## Comenzando 🚀
