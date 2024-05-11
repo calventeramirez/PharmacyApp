@@ -4,16 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmacyApp - La mejor farmacia a tu mano</title>
+    <title>Carrito - PharmacyApp</title>
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
+    <?php require "./funciones/conexion_bbdd.php" ?>
 </head>
 
 <body>
-    <?php session_start(); ?>
+    <?php 
+    session_start();
+    if (isset($_SESSION["usuario"])) {
+        $usuario = $_SESSION["usuario"];
+        $rol = $_SESSION["rol"];
+    } else {
+        header("Location: /login.php");
+    }
+    if($rol != "admin" && $rol != "cliente"){
+        header("Location: /index.php");
+    }
+    ?>
     <header>
         <div class="header-top">
             <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
@@ -30,7 +42,7 @@
                             echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
                         echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
-                        echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
+                        echo '<a href="/carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
                         echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
                     }
@@ -47,43 +59,65 @@
         </nav>
     </header>
     <main>
-        <!-- Sección de inicio -->
-        <!-- <section id = "imagen-logo">
-            <img src="img/logo.jpg" alt="Logo de PharmacyApp">
-        </section> -->
-        <section id="letras-index">
-            <h2>PharmacyApp</h2>
-            <p>PharmacyApp es una innovadora plataforma digital diseñada para revolucionar la forma den que las personas acceden a medicamentos y gestionan sus tratamientos. Esta aplicación móvil y web se ha desarrollado con el propósito de brindar comodidad y asistencia a personas mayores, dependientes y pacientes con enfermedades crónicas, en particular, aquellos que enfrentan la lucha contra el cáncer.</p>
-        </section>
-        <section class="salud">
-            <div>
-                <h2>Tu salud, nuestra prioridad</h2>
-                <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
-                <a href="login.php" class="btn btn-success">Comienza ahora</a>
-            </div>
-            <h2>Productos destacados</h2>
-            <div id="productos"></div>
-        </section>
-        <section class="servicios">
-    <h2>Servicios destacados</h2>
-    <div class="servicios-list">
-        <div class="card">
-            <img src="/img/consulta-medica.jpg" alt="Consulta médica">
-            <h3>Consultas médicas online</h3>
-            <p>Consulta con nuestros médicos especialistas desde la comodidad de tu hogar.</p>
+    <div class="container">
+        <h2 class="text-center mb-3">carrito</h2>
+        <div>
+            <table class=" container table table-striped table-hover">
+                <thead class="table table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Consulta para obtener medicamentos en la cesta
+                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen FROM medicamentosrecetas pc JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento WHERE pc.idReceta = (SELECT idReceta FROM recetas WHERE usuario = '$usuario')";
+                    $resultado = $conn->query($sql);
+                    $medicamentos = [];
+
+                    // Creación de objetos medicamentos a partir de los resultados
+                    while ($fila = $resultado->fetch_assoc()) {
+                        $nuevo_medicamento = new Medicamento(
+                            $fila["idMedicamento"],
+                            $fila["nombre"],
+                            $fila["descripcion"],
+                            $fila["precio"],
+                            $fila["cantidad"],
+                            $fila["imagen"]
+                        );
+                        array_push($medicamentos, $nuevo_medicamento);
+                    }
+
+                    // Mostrar medicamentos en la tabla
+                    foreach ($medicamentos as $medicamento) {
+                        echo "<tr>";
+                        echo "<td>" . $medicamento->nombre . "</td>";
+                        echo "<td>" . $medicamento->precio . "</td>";
+                        echo "<td>" . $medicamento->descripcion . "</td>";
+                        echo "<td>" . $medicamento->cantidad . "</td>";
+                    ?>
+                        <td>
+                            <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
+                        </td>
+                    <?php
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <!-- Mostrar precio total de la cesta -->
+            <?php
+            $sql = "SELECT precioTotal FROM recetas WHERE usuario = '$usuario'";
+            $resultado = $conexion->query($sql);
+            $fila = $resultado->fetch_assoc();
+            $precioTotal = $fila['precioTotal'];
+            ?>
+            <h4>El precio total de la cesta es: <?php echo $precioTotal ?>€</h4>
         </div>
-        <div class="card">
-            <img src="/img/farmacia-online.jpg" alt="Farmacia Online">
-            <h3>Farmacia online</h3>
-            <p>Solicita tus medicamentos y recíbelos en casa sin moverte.</p>
-        </div>
-        <div class="card">
-            <img src="/img/seguimiento-salud.jpg" alt="Seguimiento de salud">
-            <h3>Seguimiento de salud</h3>
-            <p>Monitoriza tu salud y recibe consejos personalizados.</p>
-        </div>
-    </div>
-</section>
     </main>
     <footer>
         <div class="footer-container">
@@ -93,8 +127,7 @@
                 </div>
                 <div class="col-lg-7">
                     <p> &copy; Desarrollado por: Pablo Jesús Calvente Ramírez, Fernando Dominguez Lago, Pablo Pérez Iza
-                        & Victor
-                        Moreno Benítez</p>
+                        & Victor Moreno Benítez</p>
                 </div>
                 <div class="col-lg-3">
                     <p>Enlaces de interés</p>

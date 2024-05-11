@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmacyApp - La mejor farmacia a tu mano</title>
+    <title>PharmacyApp - Panel de usuario</title>
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
@@ -24,9 +24,9 @@
                 <div class="cuenta-carrito">
                     <?php
                     // Si el usuario está logueado
-                    if(isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> '.$_SESSION['usuario'].'</a>';
-                        if($_SESSION['rol'] == "admin"){
+                    if (isset($_SESSION['usuario'])) {
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        if ($_SESSION['rol'] == "admin") {
                             echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
                         echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
@@ -48,42 +48,33 @@
     </header>
     <main>
         <!-- Sección de inicio -->
-        <!-- <section id = "imagen-logo">
-            <img src="img/logo.jpg" alt="Logo de PharmacyApp">
-        </section> -->
-        <section id="letras-index">
-            <h2>PharmacyApp</h2>
-            <p>PharmacyApp es una innovadora plataforma digital diseñada para revolucionar la forma den que las personas acceden a medicamentos y gestionan sus tratamientos. Esta aplicación móvil y web se ha desarrollado con el propósito de brindar comodidad y asistencia a personas mayores, dependientes y pacientes con enfermedades crónicas, en particular, aquellos que enfrentan la lucha contra el cáncer.</p>
-        </section>
-        <section class="salud">
-            <div>
-                <h2>Tu salud, nuestra prioridad</h2>
-                <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
-                <a href="login.php" class="btn btn-success">Comienza ahora</a>
-            </div>
-            <h2>Productos destacados</h2>
-            <div id="productos"></div>
-        </section>
-        <section class="servicios">
-    <h2>Servicios destacados</h2>
-    <div class="servicios-list">
-        <div class="card">
-            <img src="/img/consulta-medica.jpg" alt="Consulta médica">
-            <h3>Consultas médicas online</h3>
-            <p>Consulta con nuestros médicos especialistas desde la comodidad de tu hogar.</p>
+        <div>
+            <h2>Panel de usuario</h2>
+            <p>Bienvenido a tu panel de usuario, <?php echo $_SESSION['usuario']; ?>.</p>
+            <p>Desde aquí podrás gestionar tus pedidos, ver tus datos personales y modificarlos si es necesario.</p>
+            <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
         </div>
-        <div class="card">
-            <img src="/img/farmacia-online.jpg" alt="Farmacia Online">
-            <h3>Farmacia online</h3>
-            <p>Solicita tus medicamentos y recíbelos en casa sin moverte.</p>
+        <div>
+            <h3>Menú de usuario</h3>
+            <ul>
+                <li><a href="/pedidos.php">Ver pedidos</a></li>
+                <li><a href="/datos.php">Ver y modificar datos personales</a></li>
+            </ul>
         </div>
-        <div class="card">
-            <img src="/img/seguimiento-salud.jpg" alt="Seguimiento de salud">
-            <h3>Seguimiento de salud</h3>
-            <p>Monitoriza tu salud y recibe consejos personalizados.</p>
+        <div>
+            <h3>¿Necesitas ayuda?</h3>
+            <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
         </div>
-    </div>
-</section>
+        <div>
+            <h3>¿Quieres cerrar sesión?</h3>
+            <p>Si quieres cerrar sesión, haz clic en el siguiente botón.</p>
+            <a href="/funciones/cerraSesion.php" class="btn btn-danger">Cerrar sesión</a>
+        </div>
+        <div>
+            <h3>¿Quieres ver el carrito?</h3>
+            <p>Si quieres ver el carrito, haz clic en el siguiente botón.</p>
+            <a href="/carrito.php" class="btn btn-primary">Ver carrito</a>
+        </div>
     </main>
     <footer>
         <div class="footer-container">
@@ -109,4 +100,5 @@
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
 </body>
+
 </html>
