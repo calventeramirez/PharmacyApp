@@ -23,13 +23,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const selectedMedicamentos = shuffledMedicamentos.slice(0, 5);
             // Run the list of selected medicines
             selectedMedicamentos.forEach(medicamento => {
+                // Format the price to euros
+                let precioEnEuros = medicamento.precio.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
                 // Create each card for the medicine
                 const card = `
     <div class="card">
         <img src="${medicamento.imagen}" alt="${medicamento.nombre}">
         <h2>${medicamento.nombre}</h2>
         <p>${medicamento.descripcion}</p>
-        <p>Precio: $${medicamento.precio}</p>
+        <p>Precio: ${precioEnEuros}</p>
         <button class="add-to-cart">
             <img src="/img/anadir-al-carrito.png" alt="Añadir al carrito" style="width: 20px; height: 20px; margin-right: 5px">
             Añadir

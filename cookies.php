@@ -14,7 +14,7 @@
     <header>
     <?php session_start(); ?>
         <div class="header-top">
-            <a href="./index.html" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
+            <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
                 <div class="buscador">
                     <input type="text" placeholder="Buscar productos...">
