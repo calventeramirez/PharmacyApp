@@ -18,10 +18,10 @@ PharmacyApp es una aplicación web que ayuda a las personas mayores a gestionar 
 Este proyecto se esta desarrollando como TFGS de Desarrollo de Aplicaciones Web. Se usará gran parte de lo aprendido durante el curso.
 Los integrantes de este grupo de trabajo son:
 
--Fernando Dominguez Lago **Desarollador**
--Pablo Jesús Calvente Ramírez **Derrallador y lider de proyecto** .
--Pablo Pérez Iza **Desarrollador**
--Víctor Moreno Benítez **Desarrollador** 
+* Fernando Dominguez Lago **Desarollador**
+* Pablo Jesús Calvente Ramírez **Derrallador y lider de proyecto** .
+* Pablo Pérez Iza **Desarrollador**
+* Víctor Moreno Benítez **Desarrollador** 
 
 
 ### Pre-requisitos 📋
