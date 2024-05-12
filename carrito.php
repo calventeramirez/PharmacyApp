@@ -74,8 +74,14 @@
                 </thead>
                 <tbody>
                     <?php
-                    // Consulta para obtener medicamentos en la cesta
-                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen FROM medicamentosrecetas pc JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento WHERE pc.idReceta = (SELECT idReceta FROM recetas WHERE usuario = '$usuario')";
+                    // Consulta para obtener medicamentos en la carrito
+                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen 
+                            FROM medicamentosrecetas pc 
+                            JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento 
+                            JOIN recetas r ON pc.idReceta = r.idReceta 
+                            JOIN usuarios u ON r.nick = u.nick 
+                            WHERE u.nick = '$usuario'";
+
                     $resultado = $conn->query($sql);
                     $medicamentos = [];
 
@@ -109,14 +115,19 @@
                     ?>
                 </tbody>
             </table>
-            <!-- Mostrar precio total de la cesta -->
+            <!-- Mostrar precio total del carrito -->
             <?php
-            $sql = "SELECT precioTotal FROM recetas WHERE usuario = '$usuario'";
-            $resultado = $conexion->query($sql);
+            $sql = "SELECT precioTotal FROM recetas WHERE nick = '$usuario'";
+            $resultado = $conn->query($sql);
             $fila = $resultado->fetch_assoc();
-            $precioTotal = $fila['precioTotal'];
+            if ($fila !== null && isset($fila['precioTotal'])) {
+                $precioTotal = $fila['precioTotal'];
+            } else {
+                $precioTotal = 0;
+            }
+            
             ?>
-            <h4>El precio total de la cesta es: <?php echo $precioTotal ?>€</h4>
+            <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
         </div>
     </main>
     <footer>
