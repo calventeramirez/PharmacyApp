@@ -11,6 +11,7 @@
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
     <?php require "./funciones/conexion_bbdd.php" ?>
+    <?php require "./funciones/medicamento.php" ?>
 </head>
 
 <body>
