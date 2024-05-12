@@ -61,7 +61,7 @@
     </header>
     <main>
     <div class="container">
-        <h2 class="text-center mb-3">carrito</h2>
+        <h2 class="text-center mb-3">Tu carrito de compra</h2>
         <div>
             <table class=" container table table-striped table-hover">
                 <thead class="table table-dark">
@@ -87,6 +87,7 @@
                     $medicamentos = [];
 
                     // Creación de objetos medicamentos a partir de los resultados
+                    $numeroMedicamentos = 0;
                     while ($fila = $resultado->fetch_assoc()) {
                         $nuevo_medicamento = new Medicamento(
                             $fila["idMedicamento"],
@@ -97,6 +98,7 @@
                             $fila["imagen"]
                         );
                         array_push($medicamentos, $nuevo_medicamento);
+                        $numeroMedicamentos++;
                     }
 
                     // Mostrar medicamentos en la tabla
@@ -129,6 +131,12 @@
             
             ?>
             <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
+            <form method="post" action="/funciones/realizarPedido.php">
+                <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
+                <input type="hidden" name="idCesta" value="<?php echo $id_cesta ?>">
+                <input type="hidden" name="numeroProductos" value="<?php echo $numeroMedicamentos ?>">
+                <input type="submit" name="ENVIAR" value="Realizar el pago" class="btn btn-success">          
+            </form>
         </div>
     </main>
     <footer>
