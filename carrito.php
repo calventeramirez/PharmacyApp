@@ -11,6 +11,7 @@
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
     <?php require "./funciones/conexion_bbdd.php" ?>
+    <?php require "./funciones/medicamento.php" ?>
 </head>
 
 <body>
@@ -60,7 +61,11 @@
     </header>
     <main>
     <div class="container">
+<<<<<<< HEAD
         <h2 class="text-center mb-3">Mi carrito</h2>
+=======
+        <h2 class="text-center mb-3">Tu carrito de compra</h2>
+>>>>>>> 6d10ae5e053407ef6e7044dd59037018102b71bc
         <div>
             <table class=" container table table-striped table-hover">
                 <thead class="table table-dark">
@@ -74,13 +79,25 @@
                 </thead>
                 <tbody>
                     <?php
+<<<<<<< HEAD
                     // Consulta para obtener medicamentos en la cesta
                     $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen FROM medicamentosrecetas pc JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento WHERE pc.idReceta = (SELECT idReceta FROM recetas WHERE usuario = '$usuario')";
                     
+=======
+                    // Consulta para obtener medicamentos en la carrito
+                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen 
+                            FROM medicamentosrecetas pc 
+                            JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento 
+                            JOIN recetas r ON pc.idReceta = r.idReceta 
+                            JOIN usuarios u ON r.nick = u.nick 
+                            WHERE u.nick = '$usuario'";
+
+>>>>>>> 6d10ae5e053407ef6e7044dd59037018102b71bc
                     $resultado = $conn->query($sql);
                     $medicamentos = [];
 
                     // Creación de objetos medicamentos a partir de los resultados
+                    $numeroMedicamentos = 0;
                     while ($fila = $resultado->fetch_assoc()) {
                         $nuevo_medicamento = new Medicamento(
                             $fila["idMedicamento"],
@@ -91,6 +108,7 @@
                             $fila["imagen"]
                         );
                         array_push($medicamentos, $nuevo_medicamento);
+                        $numeroMedicamentos++;
                     }
 
                     // Mostrar medicamentos en la tabla
@@ -110,14 +128,25 @@
                     ?>
                 </tbody>
             </table>
-            <!-- Mostrar precio total de la cesta -->
+            <!-- Mostrar precio total del carrito -->
             <?php
-            $sql = "SELECT precioTotal FROM recetas WHERE usuario = '$usuario'";
-            $resultado = $conexion->query($sql);
+            $sql = "SELECT precioTotal FROM recetas WHERE nick = '$usuario'";
+            $resultado = $conn->query($sql);
             $fila = $resultado->fetch_assoc();
-            $precioTotal = $fila['precioTotal'];
+            if ($fila !== null && isset($fila['precioTotal'])) {
+                $precioTotal = $fila['precioTotal'];
+            } else {
+                $precioTotal = 0;
+            }
+            
             ?>
-            <h4>El precio total de la cesta es: <?php echo $precioTotal ?>€</h4>
+            <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
+            <form method="post" action="/funciones/realizarPedido.php">
+                <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
+                <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
+                <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
+                <input type="submit" name="ENVIAR" value="Realizar el pago" class="btn btn-success">          
+            </form>
         </div>
     </main>
     <footer>
