@@ -53,14 +53,14 @@
         <nav>
             <ul class="menu-verde">
                 <li><a href="/index.php">Inicio</a></li>
-                <li><a href="">Medicamentos</a></li>
+                <li><a href="/medicamentos.php">Medicamentos</a></li>
                 <li><a href="/contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <main>
     <div class="container">
-        <h2 class="text-center mb-3">carrito</h2>
+        <h2 class="text-center mb-3">Mi carrito</h2>
         <div>
             <table class=" container table table-striped table-hover">
                 <thead class="table table-dark">
@@ -76,6 +76,7 @@
                     <?php
                     // Consulta para obtener medicamentos en la cesta
                     $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen FROM medicamentosrecetas pc JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento WHERE pc.idReceta = (SELECT idReceta FROM recetas WHERE usuario = '$usuario')";
+                    
                     $resultado = $conn->query($sql);
                     $medicamentos = [];
 

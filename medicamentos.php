@@ -7,8 +7,8 @@
     <title>PharmacyApp - La mejor farmacia a tu mano</title>
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
+    <?php include "./funciones/conexion_bbdd.php" ?>
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
-    <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
 </head>
 
@@ -25,12 +25,12 @@
                     <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {
-                        echo '<a href="#"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
                         if ($_SESSION['rol'] == "admin") {
-                            echo '<a href="/anadirMedicamento.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
+                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
                         echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
-                        echo '<a href="#" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
+                        echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
                         echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
                     }
@@ -41,46 +41,54 @@
         <nav>
             <ul class="menu-verde">
                 <li><a href="/index.php">Inicio</a></li>
-                <li><a href="/anadirMedicamento.php">Medicamentos</a></li>
+                <li><a href="/medicamentos.php">Medicamentos</a></li>
                 <li><a href="/contacto.php">Contacto</a></li>
             </ul>
         </nav>
     </header>
     <main>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $precio = $_POST['precio'];
-        $imagen = $_POST['imagen'];
-        $cantidad = $_POST['cantidad'];
 
-        $sql = "INSERT INTO medicamentos (nombre, descripcion, precio, imagen, cantidad) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nombre, $descripcion, $precio, $imagen, $cantidad]);
-    }
-    ?>
+<?php
+// Obtenemos los medicamentos de la base de datos
+$sql = "SELECT * FROM medicamentos";
 
-<div class="card">
-    <form method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre">
+// Ejecutamos la consulta y la guardamos en $resultado
+$resultado = $conn->query("SELECT * FROM medicamentos");
 
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion"></textarea>
 
-        <label for="precio">Precio:</label>
-        <input type="number" id="precio" name="precio" step="0.01">
+// Comprueba si el carrito ya existe, si no, lo crea
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = array();
+}
 
-        <label for="imagen">URL de la imagen:</label>
-        <input type="text" id="imagen" name="imagen">
+// Si se ha pulsado el botón "Añadir"
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['añadir'])) {
+    // Añade el producto al carrito
+    $id_Medicamento = $_POST['idMedicamento'];
+    $_SESSION['carrito'][$id_Medicamento] = $idMedicamento;
+}
+// Comienzo del contenedor de la fila
+echo "<div class='row'>";  
 
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad">
-        <br></br>
-        <button type="submit">Añadir medicamento</button>
-    </form>
-</div>
+// Muestra cada producto en la tabla
+while ($producto = $resultado->fetch_assoc()) {
+    echo "<div class='col-lg-3 mb-4'>";
+    echo "<div class='card h-100'>";
+    echo "<img class='card-img-top' src='" . $producto['imagen'] . "' alt='Imagen'>";
+    echo "<div class='card-body d-flex flex-column'>";
+    echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
+    echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
+    echo "<p class='card-text'>Precio: " . $producto['precio'] .'€'. "</p>";
+    echo "<button class='add-to-cart'>";
+    echo "<img src='/img/anadir-al-carrito.png' alt='Añadir al carrito' style='width: 20px; height: 20px; margin-right: 5px'>"; //Boton "añadir" del index
+    echo "Añadir</button>";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+}
+
+echo "</div>"; 
+?>
     </main>
     <footer>
         <div class="footer-container">

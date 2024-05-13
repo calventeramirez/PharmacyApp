@@ -19,7 +19,7 @@ Este proyecto se esta desarrollando como TFGS de Desarrollo de Aplicaciones Web.
 Los integrantes de este grupo de trabajo son:
 
 * Fernando Dominguez Lago **Desarollador**
-* Pablo Jesús Calvente Ramírez **Derrallador y lider de proyecto** .
+* Pablo Jesús Calvente Ramírez **Desarrollador y lider de proyecto** .
 * Pablo Pérez Iza **Desarrollador**
 * Víctor Moreno Benítez **Desarrollador** 
 

@@ -9,7 +9,6 @@ function shuffle(array) {
     }
     return array;
 }
-
 // Event to run when the document is loaded
 document.addEventListener('DOMContentLoaded', (event) => {
     const productosContainer = document.getElementById('productos');

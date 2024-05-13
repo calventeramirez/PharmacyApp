@@ -48,29 +48,28 @@
     </header>
     <main>
         <!-- Sección de inicio -->
-        <div>
+        <div class="panel-usuario">
             <h2>Panel de usuario</h2>
             <p>Bienvenido a tu panel de usuario, <?php echo $_SESSION['usuario']; ?>.</p>
             <p>Desde aquí podrás gestionar tus pedidos, ver tus datos personales y modificarlos si es necesario.</p>
             <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
         </div>
-        <div>
+        <div class="menu-usuario">
             <h3>Menú de usuario</h3>
             <ul>
                 <li><a href="/pedidos.php">Ver pedidos</a></li>
-                <li><a href="/datos.php">Ver y modificar datos personales</a></li>
             </ul>
         </div>
-        <div>
+        <div class="ayuda">
             <h3>¿Necesitas ayuda?</h3>
             <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
         </div>
-        <div>
+        <div class="cerrar-sesion">
             <h3>¿Quieres cerrar sesión?</h3>
             <p>Si quieres cerrar sesión, haz clic en el siguiente botón.</p>
             <a href="/funciones/cerraSesion.php" class="btn btn-danger">Cerrar sesión</a>
         </div>
-        <div>
+        <div class="carrito">
             <h3>¿Quieres ver el carrito?</h3>
             <p>Si quieres ver el carrito, haz clic en el siguiente botón.</p>
             <a href="/carrito.php" class="btn btn-primary">Ver carrito</a>
