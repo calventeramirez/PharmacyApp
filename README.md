@@ -57,6 +57,10 @@ Y con acceder a localhost ya se tendra la web en pleno funcionamiento
 
 Dependiendo del sistema puede cambiar la instalación.
 
+## Trello 📦
+
+https://trello.com/b/vxNk9eNj/pharmacyapp
+
 ## Construido con 🛠️
 
 * [HTML](https://developer.mozilla.org/es/docs/Web/HTML) - Lenguaje web
