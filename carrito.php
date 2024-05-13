@@ -133,8 +133,8 @@
             <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
             <form method="post" action="/funciones/realizarPedido.php">
                 <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
-                <input type="hidden" name="idCesta" value="<?php echo $id_cesta ?>">
-                <input type="hidden" name="numeroProductos" value="<?php echo $numeroMedicamentos ?>">
+                <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
+                <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
                 <input type="submit" name="ENVIAR" value="Realizar el pago" class="btn btn-success">          
             </form>
         </div>
