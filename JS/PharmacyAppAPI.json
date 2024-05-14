@@ -61,7 +61,7 @@
         "nombre": "ZzzQuil Natura Melatonina, 30 Gominolas",
         "descripcion": "Complemento con melatonina, vitamina B6 y extractos de plantas naturales que ayuda a conciliar el sueño. Contiene 30 gominolas.",
         "precio": 8.99,
-        "imagen": "https://www.galileo61.com/19400-large_default/zzzquil-natura-melatonina-30-gominolas-frutos-del-bosque.jpg",
+        "imagen": "../img/zzzquil-natura-melatonina-30-gominolas-frutos-del-bosque.jpg",
         "cantidad": 10
       },
       {

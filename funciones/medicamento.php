@@ -16,4 +16,3 @@ class Medicamento {
         $this -> imagen = $imagen;
     }
 }
-?>

@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['añadir'])) {
     $_SESSION['carrito'][$id_Medicamento] = $idMedicamento;
 }
 // Comienzo del contenedor de la fila
-echo "<div class='row'>";  
+echo "<div class='row'>";
 
 // Muestra cada producto en la tabla
 while ($producto = $resultado->fetch_assoc()) {
@@ -78,7 +78,7 @@ while ($producto = $resultado->fetch_assoc()) {
     echo "<div class='card-body d-flex flex-column'>";
     echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
     echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
-    echo "<p class='card-text'>Precio: " . $producto['precio'] .'€'. "</p>";
+    echo "<p class='card-text'>Precio: " . $producto['precio'] . '€' . "</p>";
     echo "<button class='add-to-cart'>";
     echo "<img src='/img/anadir-al-carrito.png' alt='Añadir al carrito' style='width: 20px; height: 20px; margin-right: 5px'>"; //Boton "añadir" del index
     echo "Añadir</button>";
@@ -86,8 +86,7 @@ while ($producto = $resultado->fetch_assoc()) {
     echo "</div>";
     echo "</div>";
 }
-
-echo "</div>"; 
+echo "</div>";
 ?>
     </main>
     <footer>

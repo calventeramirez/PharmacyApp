@@ -41,7 +41,7 @@
         <nav>
             <ul class="menu-verde">
                 <li><a href="/index.php">Inicio</a></li>
-                <li><a href="">Medicamentos</a></li>
+                <li><a href="/medicamentos.php">Medicamentos</a></li>
                 <li><a href="/contacto.php">Contacto</a></li>
             </ul>
         </nav>
@@ -64,15 +64,15 @@
             <h3>¿Necesitas ayuda?</h3>
             <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
         </div>
-        <div class="cerrar-sesion">
-            <h3>¿Quieres cerrar sesión?</h3>
-            <p>Si quieres cerrar sesión, haz clic en el siguiente botón.</p>
-            <a href="/funciones/cerraSesion.php" class="btn btn-danger">Cerrar sesión</a>
-        </div>
         <div class="carrito">
             <h3>¿Quieres ver el carrito?</h3>
             <p>Si quieres ver el carrito, haz clic en el siguiente botón.</p>
             <a href="/carrito.php" class="btn btn-primary">Ver carrito</a>
+        </div>
+        <div class="cerrar-sesion">
+            <h3>¿Quieres cerrar sesión?</h3>
+            <p>Si quieres cerrar sesión, haz clic en el siguiente botón.</p>
+            <a href="/funciones/cerraSesion.php" class="btn btn-danger">Cerrar sesión</a>
         </div>
     </main>
     <footer>
