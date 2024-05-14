@@ -61,11 +61,7 @@
     </header>
     <main>
     <div class="container">
-<<<<<<< HEAD
-        <h2 class="text-center mb-3">Mi carrito</h2>
-=======
         <h2 class="text-center mb-3">Tu carrito de compra</h2>
->>>>>>> 6d10ae5e053407ef6e7044dd59037018102b71bc
         <div>
             <table class=" container table table-striped table-hover">
                 <thead class="table table-dark">
@@ -79,11 +75,6 @@
                 </thead>
                 <tbody>
                     <?php
-<<<<<<< HEAD
-                    // Consulta para obtener medicamentos en la cesta
-                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen FROM medicamentosrecetas pc JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento WHERE pc.idReceta = (SELECT idReceta FROM recetas WHERE usuario = '$usuario')";
-                    
-=======
                     // Consulta para obtener medicamentos en la carrito
                     $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen 
                             FROM medicamentosrecetas pc 
@@ -92,7 +83,6 @@
                             JOIN usuarios u ON r.nick = u.nick 
                             WHERE u.nick = '$usuario'";
 
->>>>>>> 6d10ae5e053407ef6e7044dd59037018102b71bc
                     $resultado = $conn->query($sql);
                     $medicamentos = [];
 
