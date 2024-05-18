@@ -160,11 +160,12 @@
 }
 
 #productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 15px; /* Añade un poco de padding alrededor del contenedor para dar espacio a las tarjetas */
+  display: flex; /* Esto hará que los productos se muestren en horizontal */
+  justify-content: space-around; /* Esto añadirá espacio alrededor de los productos */
+  flex-wrap: wrap; /* Esto permitirá que los productos se envuelvan a la siguiente línea si no hay suficiente espacio */
 }
+
+
 
 /*Card products propierties */
 .card {
@@ -238,30 +239,79 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/*--------------------------------EQUIPO LIST PROPIERTIES-------------------------------------*/
+
 /* Cards from "Servicios-list */
-.card {
+.card, .card-equipo {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px; /* Reduced from 15px to 10px */
-  width: calc(33% - 20px); /* Adjusted to account for the reduced margin */
+  margin: auto;
+  width: fit-content;
   box-sizing: border-box;
 }
 
-.card img {
+.card img, .card-equipo img {
   width: 100%;
   height: auto;
 }
 
 /*Transiction on card*/
-.servicios-list .card {
+.servicios-list .card, .servicios-list .card-equipo {
   transition: transform 0.3s ease-in-out;
 }
 
-.servicios-list .card:hover {
+.servicios-list .card:hover, .servicios-list .card-equipo:hover {
   transform: scale(1.05);
 }
+.card-equipo {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: center; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin: auto;
+  width: fit-content;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
 
+.titulo-parrafo {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center; 
+}
+/*--------------------------------EQUIPO LIST PROPIERTIES-------------------------------------*/
+
+.card-equipo .equipo-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.card-equipo .miembro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.card-equipo .miembro img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; 
+  object-fit: cover;
+}
+
+.card-equipo .miembro h3, .card-equipo .miembro p {
+  text-align: center;
+  width: 100%;
+}
+/*--------------------------------CONTACTO-------------------------------------*/
 .form-contact {
   background: #ffffff;
   box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.25);

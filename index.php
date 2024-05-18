@@ -24,9 +24,9 @@
                 <div class="cuenta-carrito">
                     <?php
                     // Si el usuario está logueado
-                    if(isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> '.$_SESSION['usuario'].'</a>';
-                        if($_SESSION['rol'] == "admin"){
+                    if (isset($_SESSION['usuario'])) {
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        if ($_SESSION['rol'] == "admin") {
                             echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
                         echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
@@ -65,6 +65,7 @@
             <div id="productos"></div>
         </section>
         <section class="servicios">
+        
     <h2>Servicios destacados</h2>
     <div class="servicios-list">
         <div class="card">
@@ -81,6 +82,34 @@
             <img src="/img/seguimiento-salud.jpg" alt="Seguimiento de salud">
             <h3>Seguimiento de salud</h3>
             <p>Monitoriza tu salud y recibe consejos personalizados.</p>
+        </div>
+    </div>
+    </section>
+    <section class="card-equipo">
+        <div class="titulo-parrafo">
+            <h2>Conozca al equipo de PharmacyApp</h2>
+            <p>Nuestro pequeño equipo le brindará un servicio de calidad y un trato profesional</p>
+        </div>
+    <div class="equipo-list">
+        <div class="miembro">
+            <img src="/img/calvente.jpg" alt="Miembro 1">
+            <h3>Pablo Calvente</h3>
+            <p>Desarrollador y lider del proyecto</p>
+        </div>
+        <div class="miembro">
+            <img src="/img/fernando.jpeg" alt="Miembro 2">
+            <h3>Fernando Domínguez</h3>
+            <p>Desarrollador</p>
+        </div>
+        <div class="miembro">
+            <img src="/img/pablo.jpg" alt="Miembro 3">
+            <h3>Pablo Pérez</h3>
+            <p>Desarrollador</p>
+        </div>
+        <div class="miembro">
+            <img src="/img/victor.jpg" alt="Miembro 4">
+            <h3>Victor Moreno</h3>
+            <p>Desarrollador</p>
         </div>
     </div>
 </section>
