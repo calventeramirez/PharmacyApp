@@ -54,6 +54,7 @@
             <img src="img/logo.jpg" alt="Logo de PharmacyApp">
         </section> -->
 
+        <!-- Sección del Carousel WIP Fernando -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
