@@ -8,6 +8,8 @@
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!--JavaScript for Carousel -->
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
 </head>
@@ -51,10 +53,33 @@
         <!-- <section id = "imagen-logo">
             <img src="img/logo.jpg" alt="Logo de PharmacyApp">
         </section> -->
-        <section id="letras-index">
-            <h2>PharmacyApp</h2>
-            <p>PharmacyApp es una innovadora plataforma digital diseñada para revolucionar la forma den que las personas acceden a medicamentos y gestionan sus tratamientos. Esta aplicación móvil y web se ha desarrollado con el propósito de brindar comodidad y asistencia a personas mayores, dependientes y pacientes con enfermedades crónicas, en particular, aquellos que enfrentan la lucha contra el cáncer.</p>
-        </section>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="/img/farmacia-online.jpg" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="/img/rubraca.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Atras</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Siguiente</span>
+  </a>
+</div>
         <section class="salud">
             <div>
                 <h2>Tu salud, nuestra prioridad</h2>
