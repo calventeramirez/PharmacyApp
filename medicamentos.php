@@ -48,46 +48,49 @@
     </header>
     <main>
 
-<?php
-// Obtenemos los medicamentos de la base de datos
-$sql = "SELECT * FROM medicamentos";
+        <?php
+        // Obtenemos los medicamentos de la base de datos
+        $sql = "SELECT * FROM medicamentos";
 
-// Ejecutamos la consulta y la guardamos en $resultado
-$resultado = $conn->query("SELECT * FROM medicamentos");
+        // Ejecutamos la consulta y la guardamos en $resultado
+        $resultado = $conn->query("SELECT * FROM medicamentos");
 
 
-// Comprueba si el carrito ya existe, si no, lo crea
-if (!isset($_SESSION['carrito'])) {
-    $_SESSION['carrito'] = array();
-}
+        // Comprueba si el carrito ya existe, si no, lo crea
+        if (!isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = array();
+        }
 
-// Si se ha pulsado el botón "Añadir"
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['añadir'])) {
-    // Añade el producto al carrito
-    $id_Medicamento = $_POST['idMedicamento'];
-    $_SESSION['carrito'][$id_Medicamento] = $idMedicamento;
-}
-// Comienzo del contenedor de la fila
-echo "<div class='row'>";
+        // Si se ha pulsado el botón "Añadir"
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['añadir'])) {
+            // Añade el producto al carrito
+            $id_Medicamento = $_POST['idMedicamento'];
+            $_SESSION['carrito'][$id_Medicamento] = $idMedicamento;
+        }
+        // Comienzo del contenedor de la fila
+        echo "<div class='row'>";
 
-// Muestra cada producto en la tabla
-while ($producto = $resultado->fetch_assoc()) {
-    echo "<div class='col-lg-3 mb-4'>";
-    echo "<div class='card h-100'>";
-    echo "<img class='card-img-top' src='" . $producto['imagen'] . "' alt='Imagen'>";
-    echo "<div class='card-body d-flex flex-column'>";
-    echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
-    echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
-    echo "<p class='card-text'>Precio: " . $producto['precio'] . '€' . "</p>";
-    echo "<button class='add-to-cart'>";
-    echo "<img src='/img/anadir-al-carrito.png' alt='Añadir al carrito' style='width: 20px; height: 20px; margin-right: 5px'>"; //Boton "añadir" del index
-    echo "Añadir</button>";
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
-}
-echo "</div>";
-?>
+        // Muestra cada producto en la tabla
+        while ($producto = $resultado->fetch_assoc()) {
+            echo "<div class='col-lg-3 mb-4'>";
+            echo "<div class='card h-100'>";
+            echo "<img class='card-img-top' src='" . $producto['imagen'] . "' alt='Imagen'>";
+            echo "<div class='card-body d-flex flex-column'>";
+            echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
+            echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
+            echo "<p class='card-text'>Precio: " . $producto['precio'] . '€' . "</p>";
+        ?>
+            <form method="post" action="./funciones/anadir_carrito.php">
+                <input type="hidden" name="idMedicamento" value="<?php echo $producto['idMedicamento']; ?>">
+                <button class='add-to-cart'><img src='/img/anadir-al-carrito.png' alt='Añadir al carrito' style='width: 20px; height: 20px; margin-right: 5px'>Añadir</button>
+            </form>
+        <?php
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+        echo "</div>";
+        ?>
     </main>
     <footer>
         <div class="footer-container">
@@ -113,4 +116,5 @@ echo "</div>";
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
 </body>
+
 </html>
