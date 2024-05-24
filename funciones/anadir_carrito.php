@@ -9,7 +9,7 @@
         $idReceta = $conn->query($sql)->fetch_assoc()["idReceta"];
         //Inserto el medicamento en la tabla medicamentosrecetas
         $sql2 = "INSERT INTO medicamentosrecetas VALUES ('$id_Medicamento', '$idReceta', '1')";
-        $conn->query($sql);
+        $conn->query($sql2);
 
         //Actualizo el precio total
         $sql = "SELECT precio FROM medicamentos WHERE idMedicamento = '$id_Medicamento'";
