@@ -9,7 +9,8 @@
 
 /* Estilos para el header superior */
 .header-top {
-  padding: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .container {
@@ -21,17 +22,17 @@
 .buscador {
   float: left;
   width: 70%;
-  margin-top: -8%;
+  margin-top: -5%; 
 }
 
 .buscador input[type="text"] {
   width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
-  margin-top: 2%;
-  margin-left:10%;
+  margin-top: 0%;
+  margin-left:18%;
 }
 
 .buscador button[type="submit"] {
@@ -48,13 +49,13 @@
   float: right;
   width: 50%;
   text-align: right;
-  margin-top: -6%;
-  margin-right: -9%;
+  margin-top: -8%;
+  margin-right: -16%;
 }
 
 .cuenta-carrito a {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 11px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
@@ -93,14 +94,17 @@
 
 .nav-logo img {
   width: 10%;
-  margin-top: 2%;
+  margin-top: -2%;
 }
 /*------------------------------CAROUSEL WIP------------------------------------*/
-.carousel-item img {
-  max-height: auto;
-  width: auto;
-}
 
+.carousel-item img {
+  max-height: 300px; 
+  object-fit: cover;
+}
+.carousel-item {
+  height: 300px;
+}
 
 /*--------------------------------MAIN-------------------------------------*/
 
@@ -167,12 +171,10 @@
 }
 
 #productos {
-  display: flex; /* Esto hará que los productos se muestren en horizontal */
-  justify-content: space-around; /* Esto añadirá espacio alrededor de los productos */
-  flex-wrap: wrap; /* Esto permitirá que los productos se envuelvan a la siguiente línea si no hay suficiente espacio */
+  display: flex;
+  justify-content: space-around; 
+  flex-wrap: wrap; 
 }
-
-
 
 /*Card products propierties */
 .card {
@@ -253,7 +255,7 @@
 .card, .card-equipo {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 15px;
+  padding: 20px;
   margin: auto;
   width: fit-content;
   box-sizing: border-box;
@@ -737,9 +739,25 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 /* Footer propierties for being on the bottom */
-footer {
-  margin-top: auto;
+footer * {
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+/* Responsible footer*/
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-links a {
+  flex: 1 1 200px;
 }
 
 .footer-container {
