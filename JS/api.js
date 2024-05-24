@@ -31,10 +31,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         <h2>${medicamento.nombre}</h2>
         <p>${medicamento.descripcion}</p>
         <p>Precio: ${precioEnEuros}</p>
-        <button class="add-to-cart">
-            <img src="/img/anadir-al-carrito.png" alt="Añadir al carrito" style="width: 20px; height: 20px; margin-right: 5px">
-            Añadir
-        </button>
     </div>
 `;
                 // Add the card to the container

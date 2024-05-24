@@ -57,11 +57,6 @@
         <!-- Sección del Carousel WIP Fernando -->
   
         <section class="salud">
-            <div>
-                <h2>Tu salud, nuestra prioridad</h2>
-                <p>Accede a tus medicamentos de forma fácil y cómoda desde tu hogar.</p>
-                <a href="login.php" class="btn btn-success">Comienza ahora</a>
-            </div>
             <h2>Productos destacados</h2>
             <div id="productos"></div>
         </section>
@@ -95,22 +90,22 @@
         <div class="miembro">
             <img src="/img/calvente.jpg" alt="Miembro 1">
             <h3>Pablo Calvente</h3>
-            <p>Desarrollador y lider del proyecto</p>
+            <p>CEO y lider del proyecto</p>
         </div>
         <div class="miembro">
             <img src="/img/fernando.jpeg" alt="Miembro 2">
             <h3>Fernando Domínguez</h3>
-            <p>Desarrollador</p>
+            <p>CEO</p>
         </div>
         <div class="miembro">
             <img src="/img/pablo.jpg" alt="Miembro 3">
             <h3>Pablo Pérez</h3>
-            <p>Desarrollador</p>
+            <p>CEO</p>
         </div>
         <div class="miembro">
             <img src="/img/victor.jpg" alt="Miembro 4">
             <h3>Victor Moreno</h3>
-            <p>Desarrollador</p>
+            <p>CEO</p>
         </div>
     </div>
 </section>
