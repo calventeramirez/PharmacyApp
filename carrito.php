@@ -71,6 +71,7 @@
                         <th>Descripción</th>
                         <th>Cantidad</th>
                         <th>Imagen</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,6 +114,13 @@
                         <td>
                             <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
                         </td>
+                        <td>
+                            <form method="POST" action="./funciones/eliminarProducto.php">
+                                <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
+                                <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
+                                <button class="btn btn-danger">Eliminar</button>
+                            </form>
+                            </td>
                     <?php
                         echo "</tr>";
                     }
