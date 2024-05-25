@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     AND precioTotal = '$precioTotal' AND fechaPedido = '$fechaActual'";
     $idPedido = $conn->query($sql1)->fetch_assoc()["idPedido"];
 
-    echo $idReceta;
+
     $sql2 = "SELECT idMedicamento, cantidad FROM medicamentosrecetas WHERE idReceta = '$idReceta'";
     $res = $conn->query($sql2);
 
@@ -30,12 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         array_push($idMedicamentos, $fila["idMedicamento"]);
         array_push($cantidades, $fila["cantidad"]);
     }
-    echo $idMedicamentos[0];
     for ($i = 0; $i < $numeroMedicamentos; $i++) {
-        $linea = $i + 1;
         $sqlAux = "SELECT precio FROM medicamentos WHERE idMedicamento = '$idMedicamentos[$i]'";
         $precio = $conn->query($sqlAux)->fetch_assoc()["precio"];
-        $sql3 = "INSERT INTO lineaspedidos VALUES ('$linea', '$idMedicamentos[$i]', '$idPedido', '$precio', '$cantidades[$i]')";
+        $sql3 = "INSERT INTO lineaspedidos(lineaPedido, idMedicamento, idPedido, precioUnitario, cantidad) VALUES ('$i' + 1, '$idMedicamentos[$i]', '$idPedido', '$precio', '$cantidades[$i]')";
         $conn->query($sql3);
     }
 
