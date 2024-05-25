@@ -30,14 +30,14 @@
                     <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 2px;"> ' . $_SESSION['usuario'] . '</a>';
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; "> ' . $_SESSION['usuario'] . '</a>';
                         if ($_SESSION['rol'] == "admin") {
-                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 2px;">Añadir Medicamento</a>';
+                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px ;">Añadir Medicamento</a>';
                         }
-                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 2px">Cerrar sesión</a>';
+                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>';
                         echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 2px">Iniciar Sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px;">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -64,14 +64,13 @@
             <div id="productos"></div>
         </section>
         <section class="servicios">
-        
-    <h2>Servicios destacados</h2>
-    <div class="servicios-list">
-        <div class="card">
-            <img src="/img/consulta-medica.jpg" alt="Consulta médica">
-            <h3>Consultas médicas online</h3>
-            <p>Consulta con nuestros médicos especialistas desde la comodidad de tu hogar.</p>
-        </div>
+            <h2>Servicios destacados</h2>
+        <div class="servicios-list">
+            <div class="card">
+                <img src="/img/consulta-medica.jpg" alt="Consulta médica">
+                <h3>Consultas médicas online</h3>
+                <p>Consulta con nuestros médicos especialistas desde la comodidad de tu hogar.</p>
+            </div>
         <div class="card">
             <img src="/img/farmacia-online.jpg" alt="Farmacia Online">
             <h3>Farmacia online</h3>

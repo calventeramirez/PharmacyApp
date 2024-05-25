@@ -19,8 +19,11 @@
             <a href="./index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
                 <div class="buscador">
-                    <input type="text" placeholder="Buscar productos...">
-                </div>
+                <form action="buscar.php" method="get">
+                    <input type="text" name="termino" placeholder="Buscar productos...">
+                    <button type="submit"><img src="/img/busqueda.png" alt="Buscar"></button>
+                </form>
+            </div>
                 <div class="cuenta-carrito">
                 <?php
                     // Si el usuario está logueado
