@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(data => {
             // Shuffle the list of medicines
             const shuffledMedicamentos = shuffle(data.medicamentos);
-            // Get the first 5 medicines
-            const selectedMedicamentos = shuffledMedicamentos.slice(0, 5);
+            // Get the first 4 medicines
+            const selectedMedicamentos = shuffledMedicamentos.slice(0, 4);
             // Run the list of selected medicines
             selectedMedicamentos.forEach(medicamento => {
                 // Format the price to euros
@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     <div class="card">
         <img src="${medicamento.imagen}" alt="${medicamento.nombre}">
         <h2>${medicamento.nombre}</h2>
-        <p>${medicamento.descripcion}</p>
-        <p>Precio: ${precioEnEuros}</p>
+        <h2>Precio: ${precioEnEuros}</h2>
     </div>
 `;
                 // Add the card to the container

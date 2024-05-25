@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
     session_start();
     if (isset($_SESSION["usuario"])) {
         $usuario = $_SESSION["usuario"];
@@ -23,7 +23,7 @@
     } else {
         header("Location: /login.php");
     }
-    if($rol != "admin" && $rol != "cliente"){
+    if ($rol != "admin" && $rol != "cliente") {
         header("Location: /index.php");
     }
     ?>
@@ -37,9 +37,9 @@
                 <div class="cuenta-carrito">
                     <?php
                     // Si el usuario está logueado
-                    if(isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> '.$_SESSION['usuario'].'</a>';
-                        if($_SESSION['rol'] == "admin"){
+                    if (isset($_SESSION['usuario'])) {
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        if ($_SESSION['rol'] == "admin") {
                             echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
                         }
                         echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
@@ -110,18 +110,18 @@
                         echo "<td>" . $medicamento->precio . "</td>";
                         echo "<td>" . $medicamento->descripcion . "</td>";
                         echo "<td>" . $medicamento->cantidad . "</td>";
-                    ?>
-                        <td>
-                            <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
-                        </td>
-                        <td>
-                            <form method="POST" action="./funciones/eliminarProducto.php">
-                                <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
-                                <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
-                                <button class="btn btn-danger">Eliminar</button>
-                            </form>
+                        ?>
+                            <td>
+                                <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
                             </td>
-                    <?php
+                            <td>
+                                <form method="POST" action="./funciones/eliminarProducto.php">
+                                    <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
+                                    <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </form>
+                                </td>
+                        <?php
                         echo "</tr>";
                     }
                     ?>
@@ -137,15 +137,23 @@
             } else {
                 $precioTotal = 0;
             }
-            
-            ?>
-            <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
-            <form method="post" action="/funciones/realizarPedido.php">
-                <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
-                <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
-                <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
-                <button type="submit" class="btn btn-primary">Realizar pedido</button>        
-            </form>
+
+        ?>
+         <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
+        <?php
+        if ($precioTotal > 0) {
+        ?>
+        <form method="post" action="/funciones/realizarPedido.php">
+            <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
+            <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
+            <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
+            <button type="submit" class="btn btn-primary btn-small">Realizar pedido</button>        
+        </form>
+    <?php
+    } else {
+        echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
+    }
+    ?>
         </div>
     </main>
     <footer>

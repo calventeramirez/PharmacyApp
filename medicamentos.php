@@ -79,12 +79,13 @@
             echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
             echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
             echo "<p class='card-text'>Precio: " . $producto['precio'] . '€' . "</p>";
-        ?>
+            if (isset($_SESSION['usuario'])) { ?>
             <form method="post" action="./funciones/anadir_carrito.php">
                 <input type="hidden" name="idMedicamento" value="<?php echo $producto['idMedicamento']; ?>">
                 <button class='add-to-cart'><img src='/img/anadir-al-carrito.png' alt='Añadir al carrito' style='width: 20px; height: 20px; margin-right: 5px'>Añadir</button>
             </form>
         <?php
+            }
             echo "</div>";
             echo "</div>";
             echo "</div>";

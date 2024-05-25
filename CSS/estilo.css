@@ -20,29 +20,40 @@
 }
 
 .buscador {
-  float: left;
-  width: 70%;
-  margin-top: -5%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .buscador input[type="text"] {
-  width: 90%;
-  padding: 10px;
+  width: 80%; 
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 16px;
-  margin-top: 0%;
-  margin-left:18%;
+  font-size: 15px;
+  margin-right: 10px;
 }
 
 .buscador button[type="submit"] {
+  width: auto;
   background-color: #ffffff;
   color: #ccc;
-  padding: 10px 15px;
+  padding: 15px 20px; 
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: -2%;
+}
+
+.buscador button[type="submit"] {
+  border: none;
+  background: none;
+}
+
+.buscador button[type="submit"] img {
+  width: 20px; /* Ajusta este valor según tus necesidades */
+  height: 20px;
+  vertical-align: middle;
 }
 
 .cuenta-carrito {
@@ -50,12 +61,13 @@
   width: 50%;
   text-align: right;
   margin-top: -8%;
-  margin-right: -16%;
+  margin-right: -7%;
 }
 
 .cuenta-carrito a {
   display: inline-block;
-  margin-right: 11px;
+  margin-right: 90px;
+  margin-top: 45px;
   text-decoration: none;
   color: #333;
   font-weight: bold;
@@ -70,9 +82,9 @@
 }
 
 .menu-verde {
+  width: 100%; /* Esto hará que el menú ocupe todo el ancho de la pantalla */
   background-color: #009245; /* Verde */
   padding: 10px 0;
-  margin: 0;
   list-style: none;
 }
 
@@ -191,7 +203,7 @@
 
 .card img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -227,32 +239,31 @@
   color: black;
   transform: scale(1.05);
 }
-
-/*Servicios destacados section propierties*/
-.servicios .servicios-list {
+/*--------------------------------SERVICIOS-------------------------------------*/
+.servicios-list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-/*Information list columns propierties*/
-.servicios .servicios-list li {
-  flex: 1 0 200px;
-  margin: 10px;
+.servicios-list .card img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.servicios-list .card h3 {
+  font-size: 25px;
   text-align: center;
 }
 
-/*Servicios-list propierties */
-.servicios-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.servicios-list .card p {
+  font-size: 16px;
+  text-align: center;
 }
+/*---------------------------EQUIPO LIST PROPIERTIES---------------------------*/
 
-/*--------------------------------EQUIPO LIST PROPIERTIES-------------------------------------*/
-
-/* Cards from "Servicios-list */
+/* Cards from "Equipo list */
 .card, .card-equipo {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -260,11 +271,6 @@
   margin: auto;
   width: fit-content;
   box-sizing: border-box;
-}
-
-.card img, .card-equipo img {
-  width: 100%;
-  height: auto;
 }
 
 /*Transiction on card*/
@@ -295,7 +301,6 @@
   align-items: center;
   justify-content: center; 
 }
-/*--------------------------------EQUIPO LIST PROPIERTIES-------------------------------------*/
 
 .card-equipo .equipo-list {
   display: flex;
@@ -720,8 +725,63 @@ button:hover {
   margin-bottom: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+/*--------------------------------CARRITO----------------------------------*/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
 
-/*--------------------------------MEDICAMENTOS-------------------------------------*/
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+table img {
+  width: 130px;
+  height: 100px;
+  object-fit: cover;
+}
+
+form {
+  display: inline-block;
+}
+
+form button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
+
+form button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #f44336;
+}
+
+/*-----------------------------MEDICAMENTOS----------------------------------*/
 
 .card {
   display: flex;
@@ -733,6 +793,11 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
+
+/*-------------------------------PEDIDOS----------------------------------*/
+.center {
+  text-align: center;
+}
 /*--------------------------------FOOTER-------------------------------------*/
 body {
   font-family: 'Poppins', sans-serif;
@@ -743,7 +808,7 @@ body {
 
 /* Footer propierties for being on the bottom */
 footer * {
-  max-width: 100%;
+  width: 100%;
 }
 
 * {

@@ -54,7 +54,7 @@
             $sql ="SELECT * FROM lineaspedidos WHERE idPedido = '$id_pedido'";
             $result = $conn->query($sql);
         ?>
-        <h2>Tabla de productos del pedido <?php echo $id_pedido; ?></h2>
+        <h2>Detalles del pedido número <?php echo $id_pedido; ?></h2>
         <div>
             <table>
                 <thead>
@@ -84,8 +84,12 @@
                     ?>
                 </tbody>
             </table>
-            <h4>Precio Total: <?php echo $precioTotal; ?> </h4>
+            <div>
+            <h4>Precio Total: <?php echo $precioTotal; ?> €</h4>
             <a href="./pedidos.php"><button>Volver a pedidos</button></a>
+            </div>
+           
+            
     </main>
     <footer>
         <div class="footer-container">
