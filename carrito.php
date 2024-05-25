@@ -76,7 +76,7 @@
                 <tbody>
                     <?php
                     // Consulta para obtener medicamentos en la carrito
-                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen 
+                    $sql = "SELECT pc.idMedicamento, p.nombre, p.descripcion, p.precio, pc.cantidad, p.imagen, pc.idReceta 
                             FROM medicamentosrecetas pc 
                             JOIN medicamentos p ON pc.idMedicamento = p.idMedicamento 
                             JOIN recetas r ON pc.idReceta = r.idReceta 
@@ -97,6 +97,7 @@
                             $fila["cantidad"],
                             $fila["imagen"]
                         );
+                        $idReceta = $fila["idReceta"];
                         array_push($medicamentos, $nuevo_medicamento);
                         $numeroMedicamentos++;
                     }
@@ -135,7 +136,7 @@
                 <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
                 <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
                 <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
-                <input type="submit" name="ENVIAR" value="Realizar el pago" class="btn btn-success">          
+                <button type="submit" class="btn btn-primary">Realizar pedido</button>        
             </form>
         </div>
     </main>
