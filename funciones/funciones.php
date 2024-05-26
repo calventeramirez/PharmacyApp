@@ -4,4 +4,3 @@
             $salida = trim($salida);
             return $salida;
     }
-?>

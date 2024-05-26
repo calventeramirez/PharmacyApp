@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     <div class="card">
         <img src="${medicamento.imagen}" alt="${medicamento.nombre}">
         <h2>${medicamento.nombre}</h2>
-        <h2>Precio: ${precioEnEuros}</h2>
+        <h5>Precio: ${precioEnEuros}</h5>
     </div>
 `;
                 // Add the card to the container

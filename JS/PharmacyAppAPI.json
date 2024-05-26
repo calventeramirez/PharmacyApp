@@ -18,7 +18,7 @@
       },
       {
         "id": 3,
-        "nombre": "La Roche-Posay Cicaplast Baume B5 + 100ml",
+        "nombre": "La Roche-Posay Cicaplast",
         "descripcion": "Bálsamo reparador para pieles secas",
         "precio": 13.75,
         "imagen": "https://parafarmaciahorizonte.com/wp-content/uploads/2023/04/la-roche-posay-cicaplast-baume-b5-100ml-19397-56-B.jpg",
@@ -26,7 +26,7 @@
       },
       {
         "id": 4,
-        "nombre": "Doctril Forte, 20 Comprimidos Recubiertos",
+        "nombre": "Doctril Forte",
         "descripcion": "Comprimidos para el tratamiento sintomático ocasional del dolor leve o moderado como dolores de cabeza, dentales y menstruales, así como de los estados febriles.",
         "precio": 4.99,
         "imagen": "https://www.farmasoler.com/media/catalog/product/cache/d5a969e20ef9839d9e12e95aa07e1fb2/d/o/doctril_forte_400mg_20_comprimidos_ibuprofeno_656520-8470006565209.jpg",
@@ -42,7 +42,7 @@
       },
       {
         "id": 6,
-        "nombre": "Topicrem Ds+ Sebicur Champu Anticaspa Intensivo 125 Ml",
+        "nombre": "Topicrem Ds+ Sebicur",
         "descripcion": "Cuidado de la higiene en casos de dermatitis seborreica en el cuero cabelludo, con énfasis en casos de caspa intensa e irritación.",
         "precio": 12.99,
         "imagen": "https://topicrem.es/wp-content/uploads/2023/05/DS-Champu-adultos.png",
@@ -50,7 +50,7 @@
       },
       {
         "id": 7,
-        "nombre": "Zovicrem Labial 50 mg/G Crema Herpes Bomba Dosificadora 2 gr",
+        "nombre": "Zovicrem Labial",
         "descripcion": "Crema para el alivio local de los síntomas ocasionados por el herpes labial, tales como: picor, escozor u hormigueo",
         "precio": 5.49,
         "imagen": "https://farmaciayolandavelasco.es/23066-large_default/zovicrem-labial-50-mg-g-crema-1-tubo-2-gr-bomba-dosificadora.jpg",
@@ -58,7 +58,7 @@
       },
       {
         "id": 8,
-        "nombre": "ZzzQuil Natura Melatonina, 30 Gominolas",
+        "nombre": "ZzzQuil Natura Melatonina",
         "descripcion": "Complemento con melatonina, vitamina B6 y extractos de plantas naturales que ayuda a conciliar el sueño. Contiene 30 gominolas.",
         "precio": 8.99,
         "imagen": "../img/zzzquil-natura-melatonina-30-gominolas-frutos-del-bosque.jpg",
@@ -66,7 +66,7 @@
       },
       {
         "id": 9,
-        "nombre": "Aspirina Plus, 20 Comprimidos",
+        "nombre": "Aspirina Plus",
         "descripcion": "Comprimidos para el alivio sintomático de los dolores ocasionales, como de cabeza, dentales, menstruales, musculares o de espalda, así como para los estados febriles.",
         "precio": 4.25,
         "imagen": "https://www.farma-vazquez.com/95399-thickbox_default/aspirina-plus-500-50-mg-20-comprimidos.jpg",
@@ -74,7 +74,7 @@
       },
       {
         "id": 10,
-        "nombre": "Supradyn Energy 30 comprimidos",
+        "nombre": "Supradyn Energy",
         "descripcion": "Supradyn Energy 30 comprimidos es un complemento alimenticio que aporta energía en momentos de gran esfuerzo y desgaste. Los comprimidos del bote están desarrollados a base de minerales y vitaminas con coenzima Q10 que potencian la alimentación diaria.",
         "precio": 4.75,
         "imagen": "https://www.farmatop.es/10421-large_default/supradyn-energy-30-comprimidos.jpg",
@@ -82,7 +82,7 @@
       },
       {
         "id": 11,
-        "nombre": "Diclofenaco Kern Pharma 11,6 Mg/G Gel Cutáneo, 100 gr",
+        "nombre": "Diclofenaco Kern",
         "descripcion": "Diclofenaco Kern Pharma está indicado en adultos y adolescentes mayores de 14 años para el alivio local del dolor y de la inflamación leve y ocasional.",
         "precio": 4.50,
         "imagen": "https://www.kernpharma.com/sites/default/files/productos/imagenes/diclofenaco-kern-pharma-116-mg-g-gel-tubo-100-g-0.jpg",
@@ -90,7 +90,7 @@
       },
       {
         "id": 12,
-        "nombre": "Protopic 0.1% Pomada tópica",
+        "nombre": "Protopic 0.1% Pomada",
         "descripcion": "Pomada se utiliza para tratar la dermatitis atópica moderada o grave (eccema) en adultos que no responden adecuadamente o que son intolerantes a las terapias convencionales como los corticosteroides tópicos.",
         "precio": 80.90,
         "imagen": "https://botplusweb.farmaceuticos.com/Documentos/AEMPS/Fotos/192510/full/02201004_materialas_1.jpg",
@@ -106,7 +106,7 @@
       },
       {
         "id": 14,
-        "nombre": "CABOMETYX (Cabozantinib) 30 tabletas de 20 mg",
+        "nombre": "CABOMETYX (Cabozantinib)",
         "descripcion": "Está indicado para el tratamiento de pacientes con carcinoma avanzado de células renales (un tipo de cáncer de riñón), que han recibido terapia antiangiogénica previa (terapia que inhibe la formación de nuevos vasos sanguíneos que suministran oxígeno al tumor y nutrientes)",
         "precio": 6200.00,
         "imagen": "https://perset-farma.com/wp-content/uploads/2021/09/CABOMETYX-ID-45.jpg",
@@ -114,7 +114,7 @@
       },
       {
         "id": 15,
-        "nombre": "Sarclisa (isatuximab) 1 vial de 100 mg/5 mL",
+        "nombre": "Sarclisa (isatuximab)",
         "descripcion": "Sarclisa (isatuximab) es un medicamento que se usa en combinación con pomalidomida y dexametasona o con carfilzomib para el tratamiento de adultos con mieloma múltiple refractario en recaída (MMRR). Medicamento indicado para el el linfoma de Hodgkin",
         "precio": 1340.00,
         "imagen": "https://everyone.org/media/catalog/product/cache/2a34eb77126804374f02a711ff91db55/s/a/sarclisa_img.jpeg",

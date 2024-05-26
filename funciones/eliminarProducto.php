@@ -20,4 +20,3 @@
         $conn->query($sql);
         header("Location: ../carrito.php");
     }
-?>

@@ -31,21 +31,24 @@
         <div class="header-top">
             <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
-                <div class="buscador">
-                    <input type="text" placeholder="Buscar productos...">
-                </div>
+            <div class="buscador">
+                <form action="buscar.php" method="get">
+                    <input type="text" name="termino" placeholder="Buscar productos...">
+                    <button type="submit"><img src="/img/busqueda.png" alt="Buscar"></button>
+                </form>
+            </div>
                 <div class="cuenta-carrito">
                     <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px; "> ' . $_SESSION['usuario'] . '</a>';
                         if ($_SESSION['rol'] == "admin") {
-                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
+                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px ;">Añadir Medicamento</a>';
                         }
-                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
-                        echo '<a href="/carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
+                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>';
+                        echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px;">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -164,9 +167,10 @@
                 </div>
                 <div class="col-lg-7">
                     <p> &copy; Desarrollado por: Pablo Jesús Calvente Ramírez, Fernando Dominguez Lago, Pablo Pérez Iza
-                        & Victor Moreno Benítez</p>
+                        & Victor
+                        Moreno Benítez</p>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <p>Enlaces de interés</p>
                     <ul>
                         <li class="footer-li"><a href="/politicaPrivacidad.php">Política de privacidad</a></li>

@@ -48,4 +48,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->query($sql5);
 }
 header("Location: /index.php");
-?>

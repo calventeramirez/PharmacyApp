@@ -18,21 +18,24 @@
         <div class="header-top">
             <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
             <div class="container">
-                <div class="buscador">
-                    <input type="text" placeholder="Buscar productos...">
-                </div>
+            <div class="buscador">
+                <form action="buscar.php" method="get">
+                    <input type="text" name="termino" placeholder="Buscar productos...">
+                    <button type="submit"><img src="/img/busqueda.png" alt="Buscar"></button>
+                </form>
+            </div>
                 <div class="cuenta-carrito">
                     <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {
-                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px;"> ' . $_SESSION['usuario'] . '</a>';
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px; "> ' . $_SESSION['usuario'] . '</a>';
                         if ($_SESSION['rol'] == "admin") {
-                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px; margin-right: 5px;">Añadir Medicamento</a>';
+                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px ;">Añadir Medicamento</a>';
                         }
-                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px; margin-right: 5px">Cerrar sesión</a>';
+                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>';
                         echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px;">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -46,34 +49,91 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="dashboard">
         <!-- Sección de inicio -->
-        <div class="panel-usuario">
-            <h2>Panel de usuario</h2>
-            <p>Bienvenido a tu panel de usuario, <?php echo $_SESSION['usuario']; ?>.</p>
-            <p>Desde aquí podrás gestionar tus pedidos, ver tus datos personales y modificarlos si es necesario.</p>
-            <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
-        </div>
-        <div class="menu-usuario">
-            <h3>Menú de usuario</h3>
-            <ul>
-                <li><a href="/pedidos.php">Ver pedidos</a></li>
-            </ul>
-        </div>
-        <div class="ayuda">
-            <h3>¿Necesitas ayuda?</h3>
-            <p>Si tienes alguna duda o problema, no dudes en ponerte en contacto con nosotros a través de la sección de contacto.</p>
-        </div>
-        <div class="carrito">
-            <h3>¿Quieres ver el carrito?</h3>
-            <p>Si quieres ver el carrito, haz clic en el siguiente botón.</p>
-            <a href="/carrito.php" class="btn btn-primary">Ver carrito</a>
-        </div>
-        <div class="cerrar-sesion">
-            <h3>¿Quieres cerrar sesión?</h3>
-            <p>Si quieres cerrar sesión, haz clic en el siguiente botón.</p>
-            <a href="/funciones/cerraSesion.php" class="btn btn-danger">Cerrar sesión</a>
-        </div>
+    <aside class="menu-usuario">
+  <h3>Menú</h3>
+  <ul>
+    <li><a href="/dashboard.php">Resumen de Pedidos</a></li>
+    <li><a href="/pedidos.php">Pedidos</a></li>
+    <li><a href="#">Direcciones</a></li>
+  </ul>
+  <a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>
+    </aside>
+<?php
+// Conexión a la base de datos
+$conexion = new mysqli('localhost', 'admin', 'admin', 'db_pharmacyapp');
+
+// Comprueba si la conexión ha tenido éxito
+if ($conexion->connect_error) {
+  die('Error de Conexión (' . $conexion->connect_errno . ') '. $conexion->connect_error);
+}
+
+// Obtiene el nombre de usuario de la sesión
+$usuario = $_SESSION['usuario'];
+
+// Prepara la consulta SQL
+$sql = "SELECT * FROM Pedidos WHERE nick = ?";
+
+// Prepara la declaración
+$stmt = $conexion->prepare($sql);
+
+// Vincula los parámetros
+$stmt->bind_param('s', $usuario);
+
+// Ejecuta la declaración
+$stmt->execute();
+
+// Obtiene los resultados
+$resultado = $stmt->get_result();
+
+// Muestra cada pedido en la tabla
+echo "<div class='card-pedidos'>";
+echo "<h4>Ultimos pedidos</h4>";
+while ($pedidos = $resultado->fetch_assoc()) {
+  echo "<div class='pedido'>";
+  echo "<h4>Pedido #" . $pedidos['idPedido'] . "</h4>";
+  echo "<p>Fecha: " . $pedidos['fechaPedido'] . "</p>";
+  echo "<p>Total: " . $pedidos['precioTotal'] . " €" ."</p>";
+  echo "</div>";
+}
+echo "</div>";
+
+// Cierra la declaración y la conexión
+$stmt->close();
+
+
+?>
+<?php
+// Prepara la consulta SQL para obtener los detalles del usuario
+$sqlUsuario = "SELECT nick, email FROM Usuarios WHERE nick = ?";
+
+// Prepara la declaración
+$stmtUsuario = $conexion->prepare($sqlUsuario);
+
+// Vincula los parámetros
+$stmtUsuario->bind_param('s', $usuario);
+
+// Ejecuta la declaración
+$stmtUsuario->execute();
+
+// Obtiene los resultados
+$resultadoUsuario = $stmtUsuario->get_result();
+
+// Muestra los detalles del usuario en una tarjeta
+if ($usuario = $resultadoUsuario->fetch_assoc()) {
+  echo "<div class='card-usuario'>";
+  echo "<h4>"."Datos Personales"."</h4>";
+  echo "<h4>"."Hola " . $usuario['nick'] . "</h4>";
+  echo "<p>Correo: " . $usuario['email'] . "</p>";
+  echo "</div>";
+}
+
+// Cierra la declaración
+$stmtUsuario->close();
+$conexion->close();
+?>
+
     </main>
     <footer>
         <div class="footer-container">
@@ -86,7 +146,7 @@
                         & Victor
                         Moreno Benítez</p>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <p>Enlaces de interés</p>
                     <ul>
                         <li class="footer-li"><a href="/politicaPrivacidad.php">Política de privacidad</a></li>

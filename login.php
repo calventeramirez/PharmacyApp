@@ -26,11 +26,15 @@
             </div>
                 <div class="cuenta-carrito">
                 <?php
-                    // Si el usuario está logueado
-                    if(isset($_SESSION['usuario'])) {
-                        header("Location: index.php");
+                     if (isset($_SESSION['usuario'])) {
+                        echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px; "> ' . $_SESSION['usuario'] . '</a>';
+                        if ($_SESSION['rol'] == "admin") {
+                            echo '<a href="/anadir_medicamentos.php"><img src="/img/anadir-medicamento.png" alt="anadirmMedicamento" style="width: 30px; height: 30px ;">Añadir Medicamento</a>';
+                        }
+                        echo '<a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>';
+                        echo '<a href="./carrito.php" ><img src="/img/carrito.png" alt="Carrito" style="width: 25px; height: 20px; margin-right: 5px">Carrito</a>';
                     } else { // Si no está logueado
-                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarSesion" style="width: 25px; height: 20px; margin-right: 5px">Iniciar Sesión</a>';
+                        echo '<a href="/login.php" class="cuenta"><img src="/img/iniciar-sesion.png" alt="iniciarsesion" style="width: 25px; height: 20px; margin-right: 5px;">Iniciar Sesión</a>';
                     }
                     ?>
                 </div>
@@ -153,7 +157,7 @@
                         & Victor
                         Moreno Benítez</p>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <p>Enlaces de interés</p>
                     <ul>
                         <li class="footer-li"><a href="/politicaPrivacidad.php">Política de privacidad</a></li>
@@ -162,6 +166,7 @@
                     </ul>
                 </div>
             </div>
+        </div>
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
 </body>
