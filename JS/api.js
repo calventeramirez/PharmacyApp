@@ -22,16 +22,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const selectedMedicamentos = shuffledMedicamentos.slice(0, 4);
             // Run the list of selected medicines
             selectedMedicamentos.forEach(medicamento => {
+                // Limit the name to 3 words
+                let nombre = medicamento.nombre.split(' ');
+                if (nombre.length > 3) {
+                    nombre = nombre.slice(0, 3).join(' ') + '...';
+                } else {
+                    nombre = medicamento.nombre;
+                }
                 // Format the price to euros
                 let precioEnEuros = medicamento.precio.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })
                 // Create each card for the medicine
                 const card = `
-    <div class="card">
-        <img src="${medicamento.imagen}" alt="${medicamento.nombre}">
-        <h2>${medicamento.nombre}</h2>
-        <h5>Precio: ${precioEnEuros}</h5>
-    </div>
-`;
+            <div class="card">
+                <img src="${medicamento.imagen}" alt="${medicamento.nombre}">
+                <h2>${medicamento.nombre}</h2>
+                <h5>Precio: ${precioEnEuros}</h5>
+            </div>
+            `;
                 // Add the card to the container
                 productosContainer.innerHTML += card;
             });

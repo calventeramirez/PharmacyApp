@@ -56,8 +56,6 @@
         <!-- <section id = "imagen-logo">
             <img src="img/logo.jpg" alt="Logo de PharmacyApp">
         </section> -->
-
-        <!-- Sección del Carousel WIP Fernando -->
   
         <section class="salud">
             <h2>Productos destacados</h2>

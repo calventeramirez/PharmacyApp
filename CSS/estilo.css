@@ -74,7 +74,7 @@
   display: flex;
   justify-content: left;
   padding: 10px;
-  background-color: #009245;
+  background-color: #157347;
 }
 
 .menu-verde li a {
@@ -315,7 +315,6 @@
   padding: 20px;
   width: 340px;
   box-sizing: border-box;
-  margin-top: 2%;
   margin-left: 2%;
   width: 50%;
 }
@@ -372,12 +371,10 @@ button:hover {
   box-shadow: 0px 14px 32px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 20px;
-  width: 340px;
   box-sizing: border-box;
   margin-left: 2%;
   width: 50%;
-  margin-left: 2%;
-  margin-top: 110px;
+  margin-top: 100px;
 }
 
 .mapa {
@@ -385,7 +382,6 @@ button:hover {
   margin-left: 60%;
 }
 
-/* Estilos para la sección servicios */
 .servicios {
   padding: 40px;
 }
@@ -668,7 +664,7 @@ button:hover {
 
 /*--------------------------------DASHBOARD---------------------------------*/
 .menu-usuario {
-  width: 200px; /* Ajusta este valor según tus necesidades */
+  width: 200px; 
   padding: 20px;
   background-color: #f8f9fa;
   border-radius: 5px;
@@ -784,22 +780,35 @@ form button:hover {
 
 /*-----------------------------MEDICAMENTOS----------------------------------*/
 
-.medicamentos-container{
+.medicamentos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.medicamentos-container {
-  flex: 0 0 calc(20% - 10px);
-  margin: 5px; 
-  box-sizing: border-box;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*-------------------------------PEDIDOS----------------------------------*/
+
 .center {
   text-align: center;
 }
+
 /*--------------------------------FOOTER-------------------------------------*/
 body {
   font-family: 'Poppins', sans-serif;
@@ -821,14 +830,7 @@ body {
   background-color: #157347;
   padding-top: 1%;
   margin-top: 5%;
-}
-
-.footer-container-pequeno {
-  background-color: #009245;
-  padding-top: 1%;
-  margin-top: 2%;
-  position: absolute;
-  bottom: 0;
+  box-sizing: border-box;
   width: 100%;
 }
 

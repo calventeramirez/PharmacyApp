@@ -76,11 +76,18 @@
 
         // Muestra cada producto en la tabla
         while ($producto = $resultado->fetch_assoc()) {
+            echo "<div class='col-md-3'>";
             echo "<div class='card h-100'>";
             echo "<img class='card-img-top' src='" . $producto['imagen'] . "' alt='Imagen'>";
             echo "<div class='card-body flex-column'>";
             echo "<h5 class='card-title'>" . $producto['nombre'] . "</h5>";
-            echo "<p class='card-text flex-grow-1'>" . $producto['descripcion'] . "</p>";
+            $descripcion = $producto['descripcion'];
+            $palabras = explode(' ', $descripcion);
+            /* Condicion para poner '...' cuando se cuenten mas de 11 palabras en la descripcion de los medicamentos */
+            if (str_word_count($descripcion) > 11) {
+            $descripcion = implode(' ', array_slice($palabras, 0, 11)) . '...';
+            }
+            echo "<p class='card-text flex-grow-1'>" . $descripcion . "</p>";
             echo "<p class='card-text'>Precio: " . $producto['precio'] . '€' . "</p>";
             if (isset($_SESSION['usuario'])) { ?>
             <form method="post" action="./funciones/anadir_carrito.php">
@@ -91,8 +98,9 @@
             }
             echo "</div>";
             echo "</div>";
+            echo "</div>";
         }
-        
+        echo "</div>";
         ?>
     </main>
     <footer>
@@ -119,5 +127,4 @@
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
 </body>
-
 </html>
