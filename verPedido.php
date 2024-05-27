@@ -57,7 +57,7 @@
             $sql ="SELECT * FROM lineaspedidos WHERE idPedido = '$id_pedido'";
             $result = $conn->query($sql);
         ?>
-        <h2>Detalles del pedido número <?php echo $id_pedido; ?></h2>
+        <h2>Detalles del pedido #<?php echo $id_pedido; ?></h2>
         <div>
             <table>
                 <thead>

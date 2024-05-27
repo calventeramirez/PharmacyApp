@@ -55,7 +55,7 @@
   <h3>Menú</h3>
   <ul>
     <li><a href="/dashboard.php">Resumen de Pedidos</a></li>
-    <li><a href="/pedidos.php">Pedidos</a></li>
+    <li><a href="/pedidos.php">Mis pedidos</a></li>
     <li><a href="#">Direcciones</a></li>
   </ul>
   <a href="/funciones/cerraSesion.php"><img src="/img/cerrar-sesion.png" alt="cerrarSesión" style="width: 25px; height: 20px;">Cerrar sesión</a>

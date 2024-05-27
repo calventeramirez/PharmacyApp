@@ -56,7 +56,7 @@
             $sql = "SELECT idPedido, precioTotal, fechaPedido FROM pedidos WHERE nick = '" . $_SESSION['usuario'] . "'";
             $result = $conn->query($sql);
             ?>
-            <h2 class="center">Tabla de pedidos</h2>
+            <h2 class="center">Mis pedidos</h2>
             <div>
                 <table>
                     <thead>
