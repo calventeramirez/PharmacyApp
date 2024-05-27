@@ -57,9 +57,9 @@
                     $temp_tarjeta = "";
                 } 
                 if(isset($_POST['usuario'])){
-                    $temp_usuario = $_POST['usuario'];
+                    $usuario = $_POST['usuario'];
                 } else {
-                   $temp_usuario = "";
+                   $usuario = "error";
                 }
                 if(isset($_POST['nombre'])){
                     $temp_nombre = $_POST['nombre'];
@@ -93,17 +93,7 @@
                 } else {
                     $tarjeta = $temp_tarjeta;
                 }
-                //Validamos el usuario
-                if (!strlen($temp_usuario) > 0) {
-                    $err_usario = "El nombre de usuario es obligatorio";
-                } else {
-                    $patron = "/^[a-zA-Z0-9]{4,8}$/";
-                    if (!preg_match($patron, $temp_usuario)) {
-                        $err_usario = "El usuario debe tener entre 4 y 8 caracteres y contener solamente letras o numeros";
-                    } else {
-                        $usuario = $temp_usuario;
-                    }
-                }
+             
                  //Validacion y patron de nombre
                 if (!strlen($temp_nombre) > 0) {
                     $err_nombre = "El nombre es obligatorio";
