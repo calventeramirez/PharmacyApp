@@ -109,12 +109,12 @@
                             <input type="checkbox">
                             <label>Recuerdame </label>
                           </div>
-                          <span class="span">¿Recordar la contraseña?</span>
+                          <!-- <span class="span">¿Recordar la contraseña?</span> -->
                         </div>
                         <button class="button-submit" id = "boton">Iniciar Sesión</button>
                         <p class="p">¿No tienes cuenta? <a href="./registro.php"><span class="span">Registrate</span></a>
                     
-                        </p><p class="p line">O con</p>
+                        <!-- </p><p class="p line">O con</p>
                     
                         <div class="flex-row">
                           <button class="btn google">
@@ -143,7 +143,7 @@
                             
                     </button></div></form>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer>
