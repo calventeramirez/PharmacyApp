@@ -158,6 +158,34 @@
     }
     ?>
         </div>
+        <div>
+            <form>
+                <h3>Dirección de envío</h3>
+                <label for = "Nombre">Nombre</label>
+                <input type="text" id="Nombre" name="Nombre" required>
+                <label for = "Apellidos">Apellidos</label>
+                <input type="text" id="Apellidos" name="Apellidos" required>
+                <label for = "Direccion">Dirección</label>
+                <input type="text" id="Direccion" name="Direccion" required>
+                <label for = "Ciudad">Ciudad</label>
+                <input type="text" id="Ciudad" name="Ciudad" required>
+                <label for = "Provincia">Provincia</label>
+                <input type="text" id="Provincia" name="Provincia" required>
+                <label for = "CodigoPostal">Código postal</label>
+                <input type="text" id="CodigoPostal" name="CodigoPostal" required>
+            </form>
+            <form>
+                <h3>Metodo de pago</h3>
+                <label for = "NombreTarjeta">Nombre en la tarjeta</label>
+                <input type="text" id="NombreTarjeta" name="NombreTarjeta" required>
+                <label for = "NumeroTarjeta">Numero de la tarjeta</label>
+                <input type="text" id="NumeroTarjeta" name="NumeroTarjeta" required>
+                <label for = "FechaCaducidad">Fecha de caducidad</label>
+                <input type="text" id="FechaCaducidad" name="FechaCaducidad" required>
+                <label for = "CVV">CVV</label>
+                <input type="text" id="CVV" name="CVV" required>
+            </form>
+        </div>
     </main>
     <footer>
         <div class="footer-container">
