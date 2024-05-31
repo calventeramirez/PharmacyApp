@@ -8,10 +8,13 @@
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
-    <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
+   
+    <script src="./JS/popup.js"></script> <!-- Script para el PopUp -->
+    <script src="./JS/popupPayment.js"></script> <!-- Script para validar formularios -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
     <?php require "./funciones/conexion_bbdd.php" ?>
     <?php require "./funciones/medicamento.php" ?>
+
 </head>
 
 <body>
@@ -114,22 +117,43 @@
                         echo "<td>" . $medicamento->descripcion . "</td>";
                         echo "<td>" . $medicamento->cantidad . "</td>";
                         ?>
-                            <td>
-                                <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
-                            </td>
-                            <td>
-                                <form method="POST" action="./funciones/eliminarProducto.php">
-                                    <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
-                                    <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
-                                    <button class="btn btn-danger">Eliminar</button>
-                                </form>
-                                </td>
-                        <?php
-                        echo "</tr>";
+                                    <td>
+                                        <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
+                                    </td>
+                                    <td>
+                                        <form method="POST" action="./funciones/eliminarProducto.php">
+                                            <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
+                                            <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
+                                            <button class="btn btn-danger">Eliminar</button>
+                                        </form>
+                                        </td>
+                                <?php
+                                echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
+            <div class="card-direction">
+    <h3>Dirección de envío</h3>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nombre = $_POST['Nombre'];
+        $apellidos = $_POST['Apellidos'];
+        $direccion = $_POST['Direccion'];
+        $ciudad = $_POST['Ciudad'];
+        $provincia = $_POST['Provincia'];
+        $codigoPostal = $_POST['CodigoPostal'];
+        echo "<p>Nombre: $nombre</p>";
+        echo "<p>Apellidos: $apellidos</p>";
+        echo "<p>Dirección: $direccion</p>";
+        echo "<p>Ciudad: $ciudad</p>";
+        echo "<p>Provincia: $provincia</p>";
+        echo "<p>Código Postal: $codigoPostal</p>";
+    } else {
+        echo "<p>No se ha proporcionado ninguna dirección de envío.</p>";
+    }
+    ?>
+</div>
             <!-- Mostrar precio total del carrito -->
             <?php
             $sql = "SELECT precioTotal FROM recetas WHERE nick = '$usuario'";
@@ -141,51 +165,88 @@
                 $precioTotal = 0;
             }
 
-        ?>
+            ?>
          <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
         <?php
         if ($precioTotal > 0) {
-        ?>
-        <form method="post" action="/funciones/realizarPedido.php">
-            <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
-            <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
-            <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
-            <button type="submit" class="btn btn-primary btn-small">Realizar pedido</button>        
-        </form>
-    <?php
-    } else {
-        echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
-    }
-    ?>
-        </div>
-        <div>
+            ?>
+                <form method="post" action="/funciones/realizarPedido.php">
+                    <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
+                    <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
+                    <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
+                    <button type="submit" class="btn btn-primary btn-small">Realizar pedido</button>     
+                </form>
+                <button id="editButton">Editar Dirección de Envío</button>
+                <button id="editPaymentButton">Método de Pago</button>
+
+<div id="paymentPopup" class="popup">
+    <div class="popup-content">
+        <span id="closePayment">&times;</span>
+        <div class="payment">
             <form>
-                <h3>Dirección de envío</h3>
-                <label for = "Nombre">Nombre</label>
-                <input type="text" id="Nombre" name="Nombre" required>
-                <label for = "Apellidos">Apellidos</label>
-                <input type="text" id="Apellidos" name="Apellidos" required>
-                <label for = "Direccion">Dirección</label>
-                <input type="text" id="Direccion" name="Direccion" required>
-                <label for = "Ciudad">Ciudad</label>
-                <input type="text" id="Ciudad" name="Ciudad" required>
-                <label for = "Provincia">Provincia</label>
-                <input type="text" id="Provincia" name="Provincia" required>
-                <label for = "CodigoPostal">Código postal</label>
-                <input type="text" id="CodigoPostal" name="CodigoPostal" required>
-            </form>
-            <form>
-                <h3>Metodo de pago</h3>
+                <h3>Método de pago</h3>
                 <label for = "NombreTarjeta">Nombre en la tarjeta</label>
                 <input type="text" id="NombreTarjeta" name="NombreTarjeta" required>
-                <label for = "NumeroTarjeta">Numero de la tarjeta</label>
+                <label for = "NumeroTarjeta">Número de la tarjeta</label>
                 <input type="text" id="NumeroTarjeta" name="NumeroTarjeta" required>
                 <label for = "FechaCaducidad">Fecha de caducidad</label>
                 <input type="text" id="FechaCaducidad" name="FechaCaducidad" required>
                 <label for = "CVV">CVV</label>
                 <input type="text" id="CVV" name="CVV" required>
+                <button type="submit" class="btn btn-primary">Guardar Método de Pago</button>
             </form>
         </div>
+    </div>
+</div>  
+            <?php
+        } else {
+            echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
+        }
+        ?>
+    <div id="popup" class="popup">
+    <div class="popup-content">
+        <span id="close">&times;</span>
+        <div class="direction">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <h3>Dirección de envío</h3>
+    <label for = "Nombre">Nombre</label>
+    <input type="text" id="Nombre" name="Nombre" value="<?php echo isset($_POST['Nombre']) ? $_POST['Nombre'] : '' ?>" required>
+    <label for = "Apellidos">Apellidos</label>
+    <input type="text" id="Apellidos" name="Apellidos" value="<?php echo isset($_POST['Apellidos']) ? $_POST['Apellidos'] : '' ?>" required>
+    <label for = "Direccion">Dirección</label>
+    <input type="text" id="Direccion" name="Direccion" value="<?php echo isset($_POST['Direccion']) ? $_POST['Direccion'] : '' ?>" required>
+    <label for = "Ciudad">Ciudad</label>
+    <input type="text" id="Ciudad" name="Ciudad" value="<?php echo isset($_POST['Ciudad']) ? $_POST['Ciudad'] : '' ?>" required>
+    <label for = "Provincia">Provincia</label>
+    <input type="text" id="Provincia" name="Provincia" value="<?php echo isset($_POST['Provincia']) ? $_POST['Provincia'] : '' ?>" required>
+    <label for = "CodigoPostal">Código postal</label>
+    <input type="text" id="CodigoPostal" name="CodigoPostal" value="<?php echo isset($_POST['CodigoPostal']) ? $_POST['CodigoPostal'] : '' ?>" required>
+    <button type="submit" class="btn btn-primary">Enviar a esta direccion</button>
+</form>
+        </div>
+    </div>
+</div>
+
+<div id="paymentPopup" class="popup">
+    <div class="popup-content">
+        <span id="closePayment">&times;</span>
+        <div class="payment">
+            <form>
+                <h3>Método de pago</h3>
+                <label for = "NombreTarjeta">Nombre en la tarjeta</label>
+                <input type="text" id="NombreTarjeta" name="NombreTarjeta" required>
+                <label for = "NumeroTarjeta">Número de la tarjeta</label>
+                <input type="text" id="NumeroTarjeta" name="NumeroTarjeta" required>
+                <label for = "FechaCaducidad">Fecha de caducidad</label>
+                <input type="text" id="FechaCaducidad" name="FechaCaducidad" required>
+                <label for = "CVV">CVV</label>
+                <input type="text" id="CVV" name="CVV" required>
+                <button type="submit" class="btn btn-primary">Guardar Método de Pago</button>
+            </form>
+        </div>
+    </div>
+</div>
+        
     </main>
     <footer>
         <div class="footer-container">
