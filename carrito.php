@@ -231,6 +231,7 @@
     <div class="popup-content">
         <span id="closePayment">&times;</span>
         <div class="payment">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <form>
                 <h3>Método de pago</h3>
                 <label for = "NombreTarjeta">Nombre en la tarjeta</label>
