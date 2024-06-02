@@ -8,9 +8,6 @@
     <link rel="icon" href="img/favicon.png" type="image/x-icon"> <!-- favicon -->
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
-   
-    <script src="./JS/popup.js"></script> <!-- Script para el PopUp -->
-    <script src="./JS/popupPayment.js"></script> <!-- Script para validar formularios -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
     <?php require "./funciones/conexion_bbdd.php" ?>
     <?php require "./funciones/medicamento.php" ?>
@@ -20,6 +17,7 @@
 <body>
     <?php
     session_start();
+
     if (isset($_SESSION["usuario"])) {
         $usuario = $_SESSION["usuario"];
         $rol = $_SESSION["rol"];
@@ -30,6 +28,7 @@
         header("Location: /index.php");
     }
     ?>
+
     <header>
         <div class="header-top">
             <a href="/index.php" class="nav-logo"><img id="imagen-nav" src="img/logo_sin_fondo.png" alt="Logo"></a>
@@ -117,43 +116,23 @@
                         echo "<td>" . $medicamento->descripcion . "</td>";
                         echo "<td>" . $medicamento->cantidad . "</td>";
                         ?>
-                                    <td>
-                                        <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
-                                    </td>
-                                    <td>
-                                        <form method="POST" action="./funciones/eliminarProducto.php">
-                                            <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
-                                            <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </form>
-                                        </td>
-                                <?php
-                                echo "</tr>";
+                    <td>
+                        <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
+                    </td>
+                    <td>
+                        <form method="POST" action="./funciones/eliminarProducto.php">
+                        <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
+                        <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
+                        <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                <?php
+                        echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
-            <div class="card-direction">
-    <h3>Dirección de envío</h3>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nombre = $_POST['Nombre'];
-        $apellidos = $_POST['Apellidos'];
-        $direccion = $_POST['Direccion'];
-        $ciudad = $_POST['Ciudad'];
-        $provincia = $_POST['Provincia'];
-        $codigoPostal = $_POST['CodigoPostal'];
-        echo "<p>Nombre: $nombre</p>";
-        echo "<p>Apellidos: $apellidos</p>";
-        echo "<p>Dirección: $direccion</p>";
-        echo "<p>Ciudad: $ciudad</p>";
-        echo "<p>Provincia: $provincia</p>";
-        echo "<p>Código Postal: $codigoPostal</p>";
-    } else {
-        echo "<p>No se ha proporcionado ninguna dirección de envío.</p>";
-    }
-    ?>
-</div>
+
             <!-- Mostrar precio total del carrito -->
             <?php
             $sql = "SELECT precioTotal FROM recetas WHERE nick = '$usuario'";
@@ -166,87 +145,71 @@
             }
 
             ?>
-         <h4>El precio total del carrito es: <?php echo $precioTotal ?>€</h4>
-        <?php
-        if ($precioTotal > 0) {
-            ?>
-                <form method="post" action="/funciones/realizarPedido.php">
+         <h4>Total: <?php echo $precioTotal ?>€</h4>
+
+         
+         <!-- Tarjeta para mostrar la dirección de envío -->
+         <div id="addressCard" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; max-width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); <?php echo $precioTotal > 0 ? '' : 'display: none;'; ?>">
+            <h3>Dirección de envío</h3>
+            <p id="addressText">Por favor, introduce tu dirección de envío.</p>
+        </div>
+         <?php
+         if ($precioTotal > 0) {
+             ?>
+                <form id ="paymentForm2" method="post" action="/funciones/realizarPedido.php">
                     <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
                     <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
                     <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
-                    <button type="submit" class="btn btn-primary btn-small">Realizar pedido</button>     
+                    <button type="submit" class="btn btn-primary btn-small" id="orderButton" style="width: 150px;">Realizar pedido</button>
+                    <!-- Agregar botones para editar la dirección de envío y el método de pago -->
+                    <button type="button" class="btn btn-primary btn-small" id="editAddressButton" style="width: 200px;">Editar dirección de envío</button>
+                    <button type="button" class="btn btn-primary btn-small" id="editPaymentButton" style="width: 150px;">Método de pago</button>
                 </form>
-                <button id="editButton">Editar Dirección de Envío</button>
-                <button id="editPaymentButton">Método de Pago</button>
+                <?php
+         } else {
+             echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
+         }
+         ?>
 
-<div id="paymentPopup" class="popup">
-    <div class="popup-content">
-        <span id="closePayment">&times;</span>
-        <div class="payment">
-            <form>
-                <h3>Método de pago</h3>
-                <label for = "NombreTarjeta">Nombre en la tarjeta</label>
-                <input type="text" id="NombreTarjeta" name="NombreTarjeta" required>
-                <label for = "NumeroTarjeta">Número de la tarjeta</label>
-                <input type="text" id="NumeroTarjeta" name="NumeroTarjeta" required>
-                <label for = "FechaCaducidad">Fecha de caducidad</label>
-                <input type="text" id="FechaCaducidad" name="FechaCaducidad" required>
-                <label for = "CVV">CVV</label>
-                <input type="text" id="CVV" name="CVV" required>
-                <button type="submit" class="btn btn-primary">Guardar Método de Pago</button>
-            </form>
-        </div>
-    </div>
-</div>  
-            <?php
-        } else {
-            echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
-        }
-        ?>
-    <div id="popup" class="popup">
-    <div class="popup-content">
-        <span id="close">&times;</span>
-        <div class="direction">
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <h3>Dirección de envío</h3>
-    <label for = "Nombre">Nombre</label>
-    <input type="text" id="Nombre" name="Nombre" value="<?php echo isset($_POST['Nombre']) ? $_POST['Nombre'] : '' ?>" required>
-    <label for = "Apellidos">Apellidos</label>
-    <input type="text" id="Apellidos" name="Apellidos" value="<?php echo isset($_POST['Apellidos']) ? $_POST['Apellidos'] : '' ?>" required>
-    <label for = "Direccion">Dirección</label>
-    <input type="text" id="Direccion" name="Direccion" value="<?php echo isset($_POST['Direccion']) ? $_POST['Direccion'] : '' ?>" required>
-    <label for = "Ciudad">Ciudad</label>
-    <input type="text" id="Ciudad" name="Ciudad" value="<?php echo isset($_POST['Ciudad']) ? $_POST['Ciudad'] : '' ?>" required>
-    <label for = "Provincia">Provincia</label>
-    <input type="text" id="Provincia" name="Provincia" value="<?php echo isset($_POST['Provincia']) ? $_POST['Provincia'] : '' ?>" required>
-    <label for = "CodigoPostal">Código postal</label>
-    <input type="text" id="CodigoPostal" name="CodigoPostal" value="<?php echo isset($_POST['CodigoPostal']) ? $_POST['CodigoPostal'] : '' ?>" required>
-    <button type="submit" class="btn btn-primary">Enviar a esta direccion</button>
-</form>
-        </div>
+
+<!-- Popup para editar la información de pago -->
+<div id="paymentPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;"">
+    <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%;">
+        <form id="paymentForm">
+            <button type="button" id="closePaymentPopupButton" style="float: right; background: none; border: none; font-size: 20px;">&times;</button>
+            <h3>Editar información de pago</h3>
+            <label for ="CardName">Nombre en la tarjeta</label>
+            <input type="text" id="CardName" name="CardName" required>
+            <label for ="CardNumber">Número de tarjeta</label>
+            <input type="text" id="CardNumber" name="CardNumber" required>
+            <label for ="ExpiryDate">Fecha de caducidad</label>
+            <input type="text" id="ExpiryDate" name="ExpiryDate" required>
+            <label for ="CVV">CVV</label>
+            <input type="text" id="CVV" name="CVV" required>
+            <button type="submit" class="btn btn-primary">Guardar información de pago</button>
+        </form>
     </div>
 </div>
 
-<div id="paymentPopup" class="popup">
-    <div class="popup-content">
-        <span id="closePayment">&times;</span>
-        <div class="payment">
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <form>
-                <h3>Método de pago</h3>
-                <label for = "NombreTarjeta">Nombre en la tarjeta</label>
-                <input type="text" id="NombreTarjeta" name="NombreTarjeta" required>
-                <label for = "NumeroTarjeta">Número de la tarjeta</label>
-                <input type="text" id="NumeroTarjeta" name="NumeroTarjeta" required>
-                <label for = "FechaCaducidad">Fecha de caducidad</label>
-                <input type="text" id="FechaCaducidad" name="FechaCaducidad" required>
-                <label for = "CVV">CVV</label>
-                <input type="text" id="CVV" name="CVV" required>
-                <button type="submit" class="btn btn-primary">Guardar Método de Pago</button>
-            </form>
-        </div>
+<div id="payPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); align-items: center; justify-content: center;">
+    <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; text-align: center;">
+        <img src="img/compra.png" alt="Descripción de la imagen" style="width: 50px; height: 50px;">
+        <h3>Compra realizada con éxito</h3>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('orderButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('payPopup').style.display = 'flex'; // Muestra el popup
+        setTimeout(function() {
+            document.getElementById('payPopup').style.display = 'none'; // Oculta el popup después de 2 segundos
+            document.getElementById('paymentForm2').submit(); // Envía el formulario
+        }, 2000);
+    });
+});
+</script>
         
     </main>
     <footer>
@@ -272,5 +235,132 @@
         </div>
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
+
+
+     
+<!-- Popup para editar la dirección de envío -->
+<div id="addressPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+    <div style="background-color: #fefefe; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; overflow-y: auto; max-height: 90vh;">
+        <form id="addressForm">
+            <button type="button" id="closePopupButton" style="float: right; background: none; border: none; font-size: 20px;">&times;</button>
+            <h3>Editar dirección de envío</h3>
+            <label for ="Nombre">Nombre</label>
+            <input type="text" id="Nombre" name="Nombre" required>
+            <label for ="Apellidos">Apellidos</label>
+            <input type="text" id="Apellidos" name="Apellidos" required>
+            <label for = "Direccion">Dirección</label>
+            <input type="text" id="Direccion" name="Direccion" required>
+            <label for = "Ciudad">Ciudad</label>
+            <input type="text" id="Ciudad" name="Ciudad" required>
+            <label for = "CodigoPostal">Código Postal</label>
+            <input type="text" id="CodigoPostal" name="CodigoPostal" required>
+            <button type="submit" class="btn btn-primary">Guardar Dirección</button>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+      // Obtenemos el popup y el botón
+    var popup = document.getElementById('addressPopup');
+    var button = document.getElementById('editAddressButton');
+
+    // Nos aseguramos de que el popup esté oculto al cargar la página
+    popup.style.display = 'none';
+
+    // Mostramo el popup cuando se hace clic en el botón "Editar dirección de envío"
+    button.addEventListener('click', function() {
+        popup.style.display = 'flex';
+    });
+
+    // Ocultar el popup cuando se hace clic en el botón de cierre
+    document.getElementById('closePopupButton').addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    // Guardar los datos de la dirección en el almacenamiento local y actualizar la tarjeta de dirección cuando se envía el formulario
+    document.getElementById('addressForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var nombre = document.getElementById('Nombre').value;
+    var apellidos = document.getElementById('Apellidos').value;
+    var direccion = document.getElementById('Direccion').value;
+    var ciudad = document.getElementById('Ciudad').value;
+    var codigo = document.getElementById('CodigoPostal').value;
+    var addressText = 'Nombre: ' + nombre + '<br>Apellidos: ' + apellidos + '<br>Dirección: ' + direccion + '<br>Ciudad: ' + ciudad + '<br>Código Postal: ' + codigo;
+    document.getElementById('addressText').innerHTML = addressText;
+    document.getElementById('addressPopup').style.display = 'none';
+});
+});
+</script>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtén los popups y los botones
+    var paymentPopup = document.getElementById('paymentPopup');
+    var editPaymentButton = document.getElementById('editPaymentButton');
+
+    // Nos aseguramos de que los popups estén ocultos al cargar la página
+  
+    paymentPopup.style.display = 'none';
+
+    // Mostrar el popup de método de pago cuando se hace clic en el botón "Método de pago"
+    editPaymentButton.addEventListener('click', function() {
+        paymentPopup.style.display = 'flex';
+    });
+
+    // Ocultar los popups cuando se hace clic en los botones de cierre
+ 
+    document.getElementById('closePaymentPopupButton').addEventListener('click', function() {
+        paymentPopup.style.display = 'none';
+    });
+
+
+       // Agregar un guión después de cada bloque de 4 dígitos en el número de la tarjeta
+    document.getElementById('CardNumber').addEventListener('input', function(e) {
+        // Limitar la longitud de la entrada a 19 caracteres (16 dígitos y 3 guiones)
+        if (e.target.value.length > 19) {
+            e.target.value = e.target.value.slice(0, 19);
+        } else {
+            e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1-').trim();
+            // Eliminar el último guión si la longitud de la entrada es 19
+            if (e.target.value.length === 19) {
+                e.target.value = e.target.value.slice(0, -1);
+            }
+        }
+    });
+        // Limitar la longitud de la entrada a 5 caracteres (2 dígitos, 1 '/', y 2 dígitos)
+    document.getElementById('ExpiryDate').addEventListener('input', function(e) {
+        if (e.target.value.length > 5) {
+            e.target.value = e.target.value.slice(0, 5);
+        } else {
+            e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{2})/, '$1/').trim();
+        }
+    });
+        // Limitar la longitud de la entrada de CVV a 3 caracteres
+    document.getElementById('CVV').addEventListener('input', function(e) {
+        if (e.target.value.length > 3) {
+            e.target.value = e.target.value.slice(0, 3);
+        }
+    });
+
+     // Guardar los datos de pago en el almacenamiento local y actualizar la tarjeta de pago cuando se envía el formulario
+     document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var cardName = document.getElementById('CardName').value;
+        var cardNumber = document.getElementById('CardNumber').value;
+        var expiryDate = document.getElementById('ExpiryDate').value;
+        var cvv = document.getElementById('CVV').value;
+        document.getElementById('paymentPopup').style.display = 'none';
+
+        // Guardar los datos de pago en el almacenamiento local
+        localStorage.setItem('cardName', cardName);
+        localStorage.setItem('cardNumber', cardNumber);
+        localStorage.setItem('expiryDate', expiryDate);
+        localStorage.setItem('cvv', cvv);
+    });
+});
+
+
+</script>
 </body>
 </html>

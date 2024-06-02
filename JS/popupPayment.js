@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         target.setSelectionRange(position, position);
     });
-});
+
 
 document.getElementById('FechaCaducidad').addEventListener('input', function (e) {
     var target = e.target, position = target.selectionEnd, length = target.value.length;
@@ -89,4 +89,5 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
     // Cerrar el popup después de guardar los datos
     document.getElementById('paymentPopup').style.display = 'none';
+});
 });

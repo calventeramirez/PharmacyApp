@@ -792,15 +792,6 @@ form button:hover {
   border: 2px solid #f44336;
 }
 
-.card-direction {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 16px;
-  margin: 16px 0;
-  width: auto;
-  max-width: 500px; /* Ajusta este valor a lo que necesites */
-}
-
 /*-----------------------------MEDICAMENTOS----------------------------------*/
 
 .medicamentos-container {
@@ -862,6 +853,14 @@ body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 .footer-links {
