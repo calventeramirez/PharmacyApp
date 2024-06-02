@@ -27,7 +27,7 @@
                 </form>
             </div>
             </div>
-                <div class="cuenta-carrito" style="margin-top:-105px; margin-right:105px">
+                <div class="cuenta-carrito" style="margin-top:-103px; margin-right:20px">
                 <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {

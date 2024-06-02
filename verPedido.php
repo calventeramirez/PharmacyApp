@@ -10,6 +10,7 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
+
 </head>
 
 <body>
@@ -52,10 +53,13 @@
     <main>
         <!-- Sección de inicio -->
         <?php
-            require "./funciones/conexion_bbdd.php";
-            $id_pedido = $_POST['idPedido'];
-            $sql ="SELECT * FROM lineaspedidos WHERE idPedido = '$id_pedido'";
-            $result = $conn->query($sql);
+        require "./funciones/conexion_bbdd.php";
+        $id_pedido = $_POST['idPedido'];
+        $sql = "SELECT idMedicamento, cantidad, precioUnitario FROM lineaspedidos WHERE idPedido = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id_pedido); // Aquí se cambió $idPedido a $id_pedido
+        $stmt->execute();
+        $result = $stmt->get_result();
         ?>
         <h2>Detalles del pedido #<?php echo $id_pedido; ?></h2>
         <div>
@@ -69,7 +73,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $precioTotal = 0.0;
+                    
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $sql2 = "SELECT nombre FROM medicamentos WHERE idMedicamento = " . $row['idMedicamento'];
@@ -78,21 +82,28 @@
                             echo "<td>" . $result2 . "</td>";
                             echo "<td>" . $row['cantidad'] . "</td>";
                             echo "<td>" . $row['precioUnitario'] . "</td>";
-                            $precioTotal += $row['precioUnitario'];
+                            $precioTotal += $row['precioUnitario'] * $row['cantidad']; // Aquí se calcula el precio total
                             echo "</tr>";
                         }
                     } else {
                         echo "<tr><td colspan='3'>No hay productos en este pedido</td></tr>";
                     }
+
+                    echo "</tbody>";
+                    echo "</table>";
+
+                    // Muestra el subtotal, los gastos de envío y el total
+                    echo "<h4>Subtotal: " . $subtotal . " €</h4>";
+                    echo "<h4>Gastos de envío: " . $gastosEnvio . " €</h4>";
+                    echo "<h4>Total: " . ($subtotal + $gastosEnvio) . " €</h4>";
+                    echo "<a href='./pedidos.php'><button>Volver a pedidos</button></a>";
+                    echo "</div>";
+
+                    
                     ?>
                 </tbody>
             </table>
-            <div>
-            <h4>Precio Total: <?php echo $precioTotal; ?> €</h4>
-            <a href="./pedidos.php"><button>Volver a pedidos</button></a>
-            </div>
-           
-            
+
     </main>
     <footer>
         <div class="footer-container">

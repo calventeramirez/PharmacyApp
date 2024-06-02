@@ -27,6 +27,7 @@
     if ($rol != "admin" && $rol != "cliente") {
         header("Location: /index.php");
     }
+
     ?>
 
     <header>
@@ -149,10 +150,8 @@
 
             ?>
             
-         
          <h6 id="shippingCost"></h6>
          <h2 id="totalCost"></h2>
-
 
          <script>
             document.addEventListener('DOMContentLoaded', function() {
