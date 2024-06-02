@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `lineaspedidos`
 --
+CREATE SCHEMA db_pharmacyapp;
+USE db_pharmacyapp;
 
 CREATE TABLE `lineaspedidos` (
   `id` int(255) NOT NULL,
