@@ -28,7 +28,7 @@
             </div>
             </div>
                 <div class="cuenta-carrito">
-                    <?php
+                <?php
                     // Si el usuario está logueado
                     if (isset($_SESSION['usuario'])) {
                         echo '<a href="./dashboard.php"><img src="/img/avatar.png" alt="Logo" class="icon icon-account" style="width: 30px; height: 30px; margin-right: 5px; "> ' . $_SESSION['usuario'] . '</a>';

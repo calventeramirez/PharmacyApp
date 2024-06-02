@@ -114,19 +114,22 @@
                         echo "<td>" . $medicamento->nombre . "</td>";
                         echo "<td>" . $medicamento->precio . "</td>";
                         echo "<td>" . $medicamento->descripcion . "</td>";
-                        echo "<td>" . $medicamento->cantidad . "</td>";
-                        ?>
-                    <td>
-                        <img witdh="50" height="100" src="<?php echo $medicamento->imagen ?>">
-                    </td>
-                    <td>
-                        <form method="POST" action="./funciones/eliminarProducto.php">
-                        <input type="hidden" name="idMedicamento" value="<?php echo $medicamento->idMedicamento ?>">
-                        <input type="hidden" name="precio" value="<?php echo $medicamento->precio ?>">
-                        <button class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                <?php
+                        echo "<td>";
+                        echo "<select class='quantity' data-price='{$medicamento->precio}'>";
+                        for ($i = 1; $i <= 10; $i++) {
+                            $selected = $i == $medicamento->cantidad ? 'selected' : '';
+                            echo "<option value='{$i}' {$selected}>{$i}</option>";
+                        }
+                        echo "</select>";
+                        echo "</td>";
+                        echo "<td><img witdh='50' height='100' src='{$medicamento->imagen}'></td>";
+                        echo "<td>";
+                        echo "<form method='POST' action='./funciones/eliminarProducto.php'>";
+                        echo "<input type='hidden' name='idMedicamento' value='{$medicamento->idMedicamento}'>";
+                        echo "<input type='hidden' name='precio' value='{$medicamento->precio}'>";
+                        echo "<button class='btn btn-danger'>Eliminar</button>";
+                        echo "</form>";
+                        echo "</td>";
                         echo "</tr>";
                     }
                     ?>
@@ -145,7 +148,46 @@
             }
 
             ?>
-         <h4>Total: <?php echo $precioTotal ?>€</h4>
+            
+         
+         <h6 id="shippingCost"></h6>
+         <h2 id="totalCost"></h2>
+
+
+         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var quantityElements = document.querySelectorAll('.quantity');
+            var totalCostElement = document.getElementById('totalCost');
+            var shippingCostElement = document.getElementById('shippingCost');
+            var precioTotalInput = document.getElementById('precioTotal');
+            var precioTotal = <?php echo $precioTotal ?>;
+            var numeroMedicamentos = <?php echo $numeroMedicamentos ?>;
+            var idReceta = <?php echo $idReceta ?>;
+            var totalCost = precioTotal;
+            var shippingCost = 0;
+
+            // Calcular el precio total y el coste de envío
+            quantityElements.forEach(function(element) {
+            element.addEventListener('change', function() {
+            var price = parseFloat(element.getAttribute('data-price'));
+            var quantity = parseInt(element.value);
+            totalCost = precioTotal;
+            totalCost += price * (quantity - 1);
+            var city = document.getElementById('Ciudad').value;
+            shippingCost = city === 'Malaga' ? 2.99 : 10.00;
+            totalCost += shippingCost;
+            totalCostElement.textContent = 'Total: ' + totalCost.toFixed(2) + '€';
+            shippingCostElement.textContent = 'Coste de envío: ' + shippingCost.toFixed(2) + '€';
+            precioTotalInput.value = totalCost.toFixed(2);
+            });
+        });
+
+            // Mostrar el precio total y el coste de envío
+            totalCostElement.textContent = 'Total: ' + totalCost.toFixed(2) + '€';
+            shippingCostElement.textContent = 'Coste de envío: ' + shippingCost.toFixed(2) + '€';
+            precioTotalInput.value = totalCost.toFixed(2);
+    });
+        </script>
 
          
          <!-- Tarjeta para mostrar la dirección de envío -->
@@ -160,12 +202,13 @@
                     <input type="hidden" name="precioTotal" value="<?php echo $precioTotal ?>">
                     <input type="hidden" name="idReceta" value="<?php echo $idReceta ?>">
                     <input type="hidden" name="numeroMedicamentos" value="<?php echo $numeroMedicamentos ?>">
+                    <input type="hidden" id="precioTotal" name="precioTotal">
                     <button type="submit" class="btn btn-primary btn-small" id="orderButton" style="width: 150px;">Realizar pedido</button>
-                    <!-- Agregar botones para editar la dirección de envío y el método de pago -->
+                    <!-- Agregamos los botones para editar la dirección de envío y el método de pago -->
                     <button type="button" class="btn btn-primary btn-small" id="editAddressButton" style="width: 200px;">Editar dirección de envío</button>
                     <button type="button" class="btn btn-primary btn-small" id="editPaymentButton" style="width: 150px;">Método de pago</button>
                 </form>
-                <?php
+            <?php
          } else {
              echo "<p>No puedes realizar un pedido con el carrito vacío.</p>";
          }
@@ -173,43 +216,43 @@
 
 
 <!-- Popup para editar la información de pago -->
-<div id="paymentPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;"">
-    <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%;">
-        <form id="paymentForm">
-            <button type="button" id="closePaymentPopupButton" style="float: right; background: none; border: none; font-size: 20px;">&times;</button>
-            <h3>Editar información de pago</h3>
-            <label for ="CardName">Nombre en la tarjeta</label>
-            <input type="text" id="CardName" name="CardName" required>
-            <label for ="CardNumber">Número de tarjeta</label>
-            <input type="text" id="CardNumber" name="CardNumber" required>
-            <label for ="ExpiryDate">Fecha de caducidad</label>
-            <input type="text" id="ExpiryDate" name="ExpiryDate" required>
-            <label for ="CVV">CVV</label>
-            <input type="text" id="CVV" name="CVV" required>
-            <button type="submit" class="btn btn-primary">Guardar información de pago</button>
-        </form>
-    </div>
-</div>
+        <div id="paymentPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
+            <div style="background-color: #fefefe; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; overflow-y: auto; max-height: 90vh;">
+                <form id="paymentForm">
+                    <button type="button" id="closePaymentPopupButton" style="float: right; background: none; border: none; font-size: 20px;">&times;</button>
+                    <h3>Editar información de pago</h3>
+                    <label for ="CardName">Nombre en la tarjeta</label>
+                    <input type="text" id="CardName" name="CardName" required>
+                    <label for ="CardNumber">Número de tarjeta</label>
+                    <input type="text" id="CardNumber" name="CardNumber" required>
+                    <label for ="ExpiryDate">Fecha de caducidad</label>
+                    <input type="text" id="ExpiryDate" name="ExpiryDate" required>
+                    <label for ="CVV">CVV</label>
+                    <input type="text" id="CVV" name="CVV" required>
+                    <button type="submit" class="btn btn-primary">Guardar información de pago</button>
+                </form>
+            </div>
+        </div>
 
-<div id="payPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); align-items: center; justify-content: center;">
-    <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; text-align: center;">
-        <img src="img/compra.png" alt="Descripción de la imagen" style="width: 50px; height: 50px;">
-        <h3>Compra realizada con éxito</h3>
-    </div>
-</div>
+        <div id="payPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); align-items: center; justify-content: center;">
+            <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; text-align: center;">
+                <img src="img/compra.png" alt="Descripción de la imagen" style="width: 50px; height: 50px;">
+                <h3>Compra realizada con éxito</h3>
+            </div>
+        </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('orderButton').addEventListener('click', function(e) {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('orderButton').addEventListener('click', function(e) {
         e.preventDefault();
         document.getElementById('payPopup').style.display = 'flex'; // Muestra el popup
         setTimeout(function() {
-            document.getElementById('payPopup').style.display = 'none'; // Oculta el popup después de 2 segundos
-            document.getElementById('paymentForm2').submit(); // Envía el formulario
+        document.getElementById('payPopup').style.display = 'none'; // Oculta el popup después de 2 segundos
+        document.getElementById('paymentForm2').submit(); // Envía el formulario
         }, 2000);
     });
 });
-</script>
+    </script>
         
     </main>
     <footer>
@@ -236,8 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </footer>
     <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
 
-
-     
 <!-- Popup para editar la dirección de envío -->
 <div id="addressPopup" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;">
     <div style="background-color: #fefefe; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; overflow-y: auto; max-height: 90vh;">
@@ -258,6 +299,21 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var addressForm = document.getElementById('addressForm');
+    var shippingCostElement = document.getElementById('shippingCost');
+
+    // Actualizar el coste de envío cuando se envía el formulario de dirección de envío
+    addressForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var city = document.getElementById('Ciudad').value;
+        var shippingCost = city === 'Malaga' ? 2.99 : 10.00;
+        shippingCostElement.textContent = 'Coste de envío: ' + shippingCost + '€';
+    });
+});
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -359,7 +415,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('cvv', cvv);
     });
 });
-
 
 </script>
 </body>
