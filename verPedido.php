@@ -82,7 +82,6 @@
                             echo "<td>" . $result2 . "</td>";
                             echo "<td>" . $row['cantidad'] . "</td>";
                             echo "<td>" . $row['precioUnitario'] . "</td>";
-                            $precioTotal += $row['precioUnitario'] * $row['cantidad']; // Aquí se calcula el precio total
                             echo "</tr>";
                         }
                     } else {
@@ -91,11 +90,6 @@
 
                     echo "</tbody>";
                     echo "</table>";
-
-                    // Muestra el subtotal, los gastos de envío y el total
-                    echo "<h4>Subtotal: " . $subtotal . " €</h4>";
-                    echo "<h4>Gastos de envío: " . $gastosEnvio . " €</h4>";
-                    echo "<h4>Total: " . ($subtotal + $gastosEnvio) . " €</h4>";
                     echo "<a href='./pedidos.php'><button>Volver a pedidos</button></a>";
                     echo "</div>";
 
