@@ -848,45 +848,45 @@ form button:hover {
 }
 
 #recordatorio {
-  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
-  z-index: 1; /* Sitúa el popup por encima de otros elementos */
-  left: 50%; /* Centra el popup horizontalmente */
-  top: 50%; /* Centra el popup verticalmente */
-  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
-  width: 19%; /* Anchura del popup */
-  max-width: 600px; /* Anchura máxima del popup */
+  position: fixed; 
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 19%;
+  max-width: 600px;
   padding: 20px;
-  background-color: #fefefe; /* Color de fondo del popup */
-  border: 1px solid #888; /* Borde del popup */
-  display: none; /* Oculta el popup inicialmente */
+  background-color: #fefefe;
+  border: 1px solid #888;
+  display: none;
 }
 
 #popup2 {
-  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
-  z-index: 1; /* Sitúa el popup por encima de otros elementos */
-  left: 50%; /* Centra el popup horizontalmente */
-  top: 50%; /* Centra el popup verticalmente */
-  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
-  width: 19%; /* Anchura del popup */
-  max-width: 600px; /* Anchura máxima del popup */
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 19%; 
+  max-width: 600px;
   padding: 20px;
-  background-color: #fefefe; /* Color de fondo del popup */
-  border: 1px solid #888; /* Borde del popup */
-  display: none; /* Oculta el popup inicialmente */
+  background-color: #fefefe;
+  border: 1px solid #888;
+  display: none;
 }
 
 #popup3 {
-  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
-  z-index: 1; /* Sitúa el popup por encima de otros elementos */
-  left: 50%; /* Centra el popup horizontalmente */
-  top: 50%; /* Centra el popup verticalmente */
-  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
-  width: 19%; /* Anchura del popup */
-  max-width: 600px; /* Anchura máxima del popup */
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 19%;
+  max-width: 600px;
   padding: 20px;
-  background-color: #fefefe; /* Color de fondo del popup */
-  border: 1px solid #888; /* Borde del popup */
-  display: none; /* Oculta el popup inicialmente */
+  background-color: #fefefe;
+  border: 1px solid #888;
+  display: none;
 }
 
 /* Estilos para el botón de cierre del popup */
