@@ -847,6 +847,59 @@ form button:hover {
   cursor: pointer;
 }
 
+#recordatorio {
+  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
+  z-index: 1; /* Sitúa el popup por encima de otros elementos */
+  left: 50%; /* Centra el popup horizontalmente */
+  top: 50%; /* Centra el popup verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
+  width: 19%; /* Anchura del popup */
+  max-width: 600px; /* Anchura máxima del popup */
+  padding: 20px;
+  background-color: #fefefe; /* Color de fondo del popup */
+  border: 1px solid #888; /* Borde del popup */
+  display: none; /* Oculta el popup inicialmente */
+}
+
+#popup2 {
+  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
+  z-index: 1; /* Sitúa el popup por encima de otros elementos */
+  left: 50%; /* Centra el popup horizontalmente */
+  top: 50%; /* Centra el popup verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
+  width: 19%; /* Anchura del popup */
+  max-width: 600px; /* Anchura máxima del popup */
+  padding: 20px;
+  background-color: #fefefe; /* Color de fondo del popup */
+  border: 1px solid #888; /* Borde del popup */
+  display: none; /* Oculta el popup inicialmente */
+}
+
+#popup3 {
+  position: fixed; /* Posiciona el popup en relación con la ventana del navegador */
+  z-index: 1; /* Sitúa el popup por encima de otros elementos */
+  left: 50%; /* Centra el popup horizontalmente */
+  top: 50%; /* Centra el popup verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta la posición del popup para que esté perfectamente centrado */
+  width: 19%; /* Anchura del popup */
+  max-width: 600px; /* Anchura máxima del popup */
+  padding: 20px;
+  background-color: #fefefe; /* Color de fondo del popup */
+  border: 1px solid #888; /* Borde del popup */
+  display: none; /* Oculta el popup inicialmente */
+}
+
+/* Estilos para el botón de cierre del popup */
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
 /*--------------------------------FOOTER-------------------------------------*/
 body {
   font-family: 'Poppins', sans-serif;

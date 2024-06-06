@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./CSS/estilo.css"> <!-- Hoja de estilos -->
     <link href="CSS/bootstrap.min.css" rel="stylesheet"><!-- Bootstrap -->
     <script src="./JS/api.js"></script> <!-- Script de JavaScript -->
+    <script src="./JS/recordatorio.js"></script> <!-- Script de JavaScript -->
     <script src="JS/fontawesome.min.js" defer></script> <!-- Font Awesome -->
 </head>
 
@@ -102,7 +103,6 @@ echo "</div>";
 // Cierra la declaración y la conexión
 $stmt->close();
 
-
 ?>
 <?php
 // Prepara la consulta SQL para obtener los detalles del usuario
@@ -117,22 +117,49 @@ $stmtUsuario->bind_param('s', $usuario);
 // Ejecuta la declaración
 $stmtUsuario->execute();
 
+
 // Obtiene los resultados
 $resultadoUsuario = $stmtUsuario->get_result();
 
 // Muestra los detalles del usuario en una tarjeta
-if ($usuario = $resultadoUsuario->fetch_assoc()) {
+if ($detallesUsuario = $resultadoUsuario->fetch_assoc()) {
   echo "<div class='card-usuario'>";
   echo "<h4>"."Datos Personales"."</h4>";
-  echo "<h4>"."Hola " . $usuario['nick'] . "</h4>";
-  echo "<p>Correo: " . $usuario['email'] . "</p>";
+  echo "<h4>"."Hola " . $detallesUsuario['nick'] . "</h4>";
+  echo "<p>Correo: " . $detallesUsuario['email'] . "</p>";
   echo "</div>";
 }
 
-// Cierra la declaración
-$stmtUsuario->close();
-$conexion->close();
+
 ?>
+
+<div id="contador"></div>
+
+<div id="recordatorio">
+  <p>¿Se ha tomado la dosis oportuna?</p>
+  <div id="opciones">
+    <div>
+      <input type="radio" id="confirmacion" name="opcion">
+      <label for="confirmacion">Sí</label>
+    </div>
+    <div>
+      <input type="radio" id="negacion" name="opcion">
+      <label for="negacion">No</label>
+    </div>
+    <button id="confirmar">Confirmar</button>
+  </div>
+</div>
+
+<div id="popup2">
+    <p>Gracias por su confirmacion</p>
+    <button class="cerrar-popup">Cerrar</button>
+</div>
+
+<div id="popup3">
+    <p>Si se ha olvidado de la dosis, por favor, tomesela durante las proximas 8 horas</p>
+    <button class="cerrar-popup">Cerrar</button>
+</div>
+
 
     </main>
     <footer>
@@ -157,7 +184,7 @@ $conexion->close();
             </div>
         </div>
     </footer>
-    <script src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
-</body>
-
+    <scrip src="JS/bootstrap.bundle.min.js"></script> <!-- Bootstrap -->
+    
+    
 </html>
