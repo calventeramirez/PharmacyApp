@@ -61,7 +61,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         ?>
-        <h2>Detalles del pedido #<?php echo $id_pedido; ?></h2>
+        <h2 style="margin-left:10%" class="my-2">Detalles del pedido #<?php echo $id_pedido; ?></h2>
         <div>
             <table>
                 <thead>
@@ -90,7 +90,7 @@
 
                     echo "</tbody>";
                     echo "</table>";
-                    echo "<a href='./pedidos.php'><button>Volver a pedidos</button></a>";
+                    echo "<a href='./pedidos.php' style='margin-left:10%'><button>Volver a pedidos</button></a>";
                     echo "</div>";
 
                     
