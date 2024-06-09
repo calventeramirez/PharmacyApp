@@ -76,7 +76,7 @@
 
         // Muestra cada producto en la tabla
         while ($producto = $resultado->fetch_assoc()) {
-            echo "<div class='col-md-3'>";
+            echo "<div class='col-md-3 my-2'>";
             echo "<div class='card h-100'>";
             echo "<img class='card-img-top' src='" . $producto['imagen'] . "' alt='Imagen'>";
             echo "<div class='card-body flex-column'>";
