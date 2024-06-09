@@ -847,59 +847,88 @@ form button:hover {
   cursor: pointer;
 }
 
+/*----------------------------POPUP RECORDATORIO--------------------------------*/
 #recordatorio {
-  position: fixed; 
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 19%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: #fefefe;
-  border: 1px solid #888;
-  display: none;
-}
-
-#popup2 {
   position: fixed;
   z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 19%; 
-  max-width: 600px;
-  padding: 20px;
-  background-color: #fefefe;
-  border: 1px solid #888;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
   display: none;
+  align-items: center;
+  justify-content: center;
 }
 
-#popup3 {
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 19%;
-  max-width: 600px;
-  padding: 20px;
+#recordatorio-content {
   background-color: #fefefe;
+  padding: 20px;
   border: 1px solid #888;
-  display: none;
+  width: 50%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-/* Estilos para el botón de cierre del popup */
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
+#opciones {
+  display: flex;
+  justify-content: space-around; /* Cambiado de space-between a space-around */
+  margin-top: 20px;
+}
+
+#opciones button {
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
+  margin-right: 10px; /* Añadido margen a la derecha */
 }
 
-.hidden {
-  display: none;
+/*-------------------------------POPUPS2 Y 3-----------------------------------*/
+
+#popup2, #popup3 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+  display: none; /* Inicialmente ocultos */
+  align-items: center;
+  justify-content: center;
 }
+
+#popup-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#popup2 > div, #popup3 > div {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Ajusta esto según tus necesidades */
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cerrar-popup {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
 /*--------------------------------FOOTER-------------------------------------*/
 body {
   font-family: 'Poppins', sans-serif;

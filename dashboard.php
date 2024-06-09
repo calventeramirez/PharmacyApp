@@ -129,35 +129,31 @@ if ($detallesUsuario = $resultadoUsuario->fetch_assoc()) {
   echo "<p>Correo: " . $detallesUsuario['email'] . "</p>";
   echo "</div>";
 }
-
-
 ?>
 
-<div id="contador"></div>
-
 <div id="recordatorio">
-  <p>¿Se ha tomado la dosis oportuna?</p>
-  <div id="opciones">
-    <div>
-      <input type="radio" id="confirmacion" name="opcion">
-      <label for="confirmacion">Sí</label>
+  <div id="recordatorio-content">
+    <p>¿Se ha tomado la dosis recomendada?</p>
+    <div id="opciones">
+      <button id="si">Sí</button>
+      <button id="no">No</button>
     </div>
-    <div>
-      <input type="radio" id="negacion" name="opcion">
-      <label for="negacion">No</label>
-    </div>
-    <button id="confirmar">Confirmar</button>
+    <button class="cerrar-popup">Cerrar</button>
   </div>
 </div>
 
 <div id="popup2">
+    <div id="popup-content">
     <p>Gracias por su confirmacion</p>
     <button class="cerrar-popup">Cerrar</button>
+    </div>
 </div>
 
 <div id="popup3">
+    <div id="popup-content">
     <p>Si se ha olvidado de la dosis, por favor, tomesela durante las proximas 8 horas</p>
     <button class="cerrar-popup">Cerrar</button>
+    </div>
 </div>
 
 
